@@ -11,7 +11,7 @@ const AvailableHostel = () => {
 
 
                                                          {/* Available Hostel section  */}
-      <section className='mx-5 md:mx-10 lg:mx-10 mt-20 lg:mt-40'>
+      <section className='mx-5 md:mx-10 lg:mx-10 pt-20 lg:pt-40'>
         <div className='lg:flex lg:items-center lg:justify-between'>
           <h1 className='font-semibold text-[#2b2d3a] pb-5'>Avaliable Rooms</h1>
           <div className='flex gap-4 items-center'>
@@ -175,7 +175,7 @@ const AvailableHostel = () => {
 </section>
                                                                     {/* see more link  */}
      <div className=' justify-center text-center mt-8 mb-10 lg:mt-20'>
-      <button className='bg-[#E7F6EE] text-[14px] text-black px-3 py-1 rounded-md mt-4'><Link>See More</Link></button>
+      <button className='bg-[#E7F6EE] text-[14px] text-black px-3 py-1 rounded-md mt-4 hover:bg-black hover:text-[#E7F6EE]'><Link to ='/allavaliablehostel'>See More</Link></button>
      </div>
 </div>
 

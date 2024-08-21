@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from "react";
 import img from '../Assest/Login-img.jpg'
 import { FcGoogle } from "react-icons/fc";
 import { Link } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword] = useState("");
   return (
         <>
                                                             {/* Login Section  */}
@@ -31,10 +34,26 @@ const Login = () => {
                                 <p className='text-[14px] text-[#425466]'>Verified email / Matric number / Jamb number  </p>
                                 <input type="text" placeholder='adminbouesti@gmail.com' className='w-[280px] px-4 py-2 placeholder-sm rounded-md shadow outline-none'/>
                             </div>
-                            <div className='flex flex-col gap-2'>
+                                                               
+                                                                {/* Password section  */}
+                             <div className='flex flex-col gap-2'>
                                 <p className='text-[14px] text-[#425466]'>Password</p>
-                                <input type="password" placeholder='*****************'  className='w-full  px-4 py-2 placeholder-sm rounded-md shadow outline-none'/>
+                                <div className="relative">
+                                     <input type={showPassword ? "text" : "password" }
+                                        placeholder='*****************' 
+                                        required 
+                                        value={password}
+                                        onChange={(ev) => setPassword(ev.target.value)}
+                                        className='w-full  px-4 py-2 placeholder-sm rounded-md shadow outline-none' />
+                                     
+                                     <button type="button" 
+                                         onClick={() => setShowPassword(!showPassword)}
+                                         className="absolute right-2 top-4 text-gray-500 hover:text-gray-900">
+                                                 {showPassword ? <FaEyeSlash /> : <FaEye />} 
+                                    </button>
+                                </div>
                             </div>
+                            <Link to ='/adminlogin' className='text-sm text-[#0BA75A]'>Admin</Link>
                             <Link to='/' className='py-3 bg-[#0BA75A] text-white font-semibold text-sm rounded-[10px] text-center hover:bg-[#1d623f] hover:translate-y-2 hover:transition-transform'>Login</Link>
                            
                         </div>

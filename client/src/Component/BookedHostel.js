@@ -88,7 +88,7 @@ const BookedHostel = () => {
 
                                           {/* see more link  */}
      <div className=' justify-center text-center mt-8 mb-10 lg:mt-20'>
-      <button className='bg-[#E7F6EE] text-[14px] text-black px-3 py-1 rounded-md mt-4'><Link>See More</Link></button>
+      <button className='bg-[#E7F6EE] text-[14px] text-black px-3 py-1 rounded-md mt-4 hover:bg-black hover:text-[#E7F6EE]'><Link to ='/allbookedhostel'>See More</Link></button>
      </div>
 
     </section>

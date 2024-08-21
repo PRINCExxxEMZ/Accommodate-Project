@@ -16,7 +16,7 @@ const CreateHostel = () => {
                                                     {/* Navbar section  */}
    <Navbar/>
 
-                                                {/* Create Hostel Section  */}
+{/*----------------------------------------------------------- Create Hostel Section --------------------------------------------------------------------------------- */}
             <section className='pt-[100px] mx-5 md:mx-10 lg:mx-[100px]'>
             <h1 className='font-semibold text-[#2b2d3a] text-[20px] md:text-[30px] mb-10'>Create Hostel</h1>
 
@@ -33,6 +33,7 @@ const CreateHostel = () => {
                             <option value="" disabled selected hidden>Gender</option>
                             <option>Male Hostel</option>
                             <option>Female Hostel</option>
+                            <option>Both</option>
                         </select>
                     </div>
 

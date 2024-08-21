@@ -7,6 +7,7 @@ import AvailableHostel from '../Component/AvailableHostel';
 import BookedHostel from '../Component/BookedHostel';
 import AdminOverview from '../Component/AdminOverview';
 
+
 const AdminHero = () => {
   return (
     <>

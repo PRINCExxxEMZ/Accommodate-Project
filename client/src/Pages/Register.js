@@ -11,7 +11,7 @@ const Register = () => {
                                                                 {/* Sign Up img  */}
             <div className='hidden md:w-6/12 md:block lg:visible '>
                 <h2 className='text-white font-bold text-xl tracking-tight absolute z-50 m-10'>Accommdate</h2>
-                <img src={img} className='w-full h-full object-cover overflow-hidden'/>
+                <img src={img} className='w-full h-full object-cover overflow-hidden'alt='Student'/>
             </div>
 
 

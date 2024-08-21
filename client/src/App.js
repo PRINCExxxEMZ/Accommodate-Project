@@ -11,8 +11,11 @@ import AdminHostel from './Admin/AdminHostel';
 import CreateHostel from './Admin/CreateHostel';
 import CreateRoom from './Admin/CreateRoom';
 import AdminPayment from './Admin/AdminPayment';
-import Demo from './Component/Demo';
+import AllAvailableHostel from './Pages/AllAvailableHostel';
+import AllBookedHostel from './Pages/AllBookedHostel';
 
+import Demo from './Component/Demo';
+import AdminLogin from './Admin/AdminLogin';
 
 
 function App() {
@@ -28,11 +31,14 @@ function App() {
         <Route path='/fresher' element={<FresherRegister/>}></Route>
         <Route path='/' element={<Hero/>}></Route>
         <Route path='/hostel' element={<Hostel/>}></Route>
+        <Route path='/allavaliablehostel' element={<AllAvailableHostel/>}></Route>
+        <Route path='/allbookedhostel' element={<AllBookedHostel/>}></Route>
         <Route path='/hosteldetails' element={<HostelDetails/>}></Route>
         <Route path='/payment' element={<Payment/>}></Route>
 
                                                 {/* Admin section  */}
         
+        <Route path='/adminlogin' element={<AdminLogin/>}></Route>
         <Route path='/admin' element={<AdminHero/>}></Route>
         <Route path='/adminhostel' element={<AdminHostel/>}></Route>
         <Route path='/createroom' element={<CreateRoom/>}></Route>
