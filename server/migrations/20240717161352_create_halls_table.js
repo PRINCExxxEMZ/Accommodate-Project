@@ -5,6 +5,7 @@ exports.up = function(knex) {
       table.string('name');
       table.string('gender');
       table.string('rooms');
+      table.string('hall_image');
     });
   };
   

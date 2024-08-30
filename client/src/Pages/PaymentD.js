@@ -3,7 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import Navbar from '../Component/Navbar';
 import Footer from '../Component/Footer';
 
-const Payment = () => {
+const PaymentD = () => {
   return (
  <>
 
@@ -113,4 +113,4 @@ const Payment = () => {
   )
 }
 
-export default Payment
+export default PaymentD

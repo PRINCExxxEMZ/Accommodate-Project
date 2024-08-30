@@ -8,6 +8,7 @@ exports.up = function(knex) {
       table.integer('bed_space');
       table.integer('booked_spaces');
       table.integer('price');
+      table.string('room_image');
       table.boolean('is_available').defaultTo(true);
     });
   };

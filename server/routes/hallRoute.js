@@ -40,7 +40,11 @@ router.get("/", async (req, res) => {
 
   //------------------------------------------------------POST (Create) a new hall
   router.post('/', async (req, res) => {
-    const { name, gender, rooms } = req.body;
+    const { name, gender, rooms, hall_image } = req.body;
+    console.log(name)
+    console.log(gender)
+    console.log(rooms)
+    console.log(hall_image)
     try {
       //------Check if a hall with the same name already exists
       const existingHall = await db('halls').where('name', name).first();

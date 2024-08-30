@@ -1,10 +1,64 @@
-import React from 'react'
 import { FaBuilding } from 'react-icons/fa'
 import { MdBedroomChild } from 'react-icons/md'
 import { MdOutlineBedroomChild } from 'react-icons/md'
 import { IoIosBed } from 'react-icons/io'
+import React, { useState, useEffect } from "react";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
+import axios from "axios";
+import ReactLoading from "react-loading";
 
 const AdminOverview = () => {
+
+    const [halls, setHalls] = useState([]);
+    const [rooms, setRooms] = useState([]);
+    const [loading, setLoading] = useState("");
+
+      // Fetch Rooms
+  useEffect(() => {
+    async function hostels() {
+      try {
+        setLoading(true);
+
+        const response = await axios.get("http://localhost:8000/api/rooms");
+        setRooms(response.data);
+        setLoading(false);
+
+      } catch (error) {
+        toastr.error("Error retrieving Hostel");
+        setLoading(false);
+
+      }
+      
+    }
+
+    hostels();
+  }, []);
+
+      //Fetch Hostel
+  useEffect(() => {
+    async function hostels() {
+      try {
+        setLoading(true);
+
+        const response = await axios.get("http://localhost:8000/api/halls");
+        setHalls(response.data);
+        setLoading(false);
+
+      } catch (error) {
+        toastr.error("Error retrieving Hostel");
+        setLoading(false);
+
+      }
+      
+    }
+
+    hostels();
+  }, []);
+
+
+  
+
   return (
    <>
       <section className='mx-5 md:mx-10 lg:mx-10 pt-[100px] pb-10 lg:pt-[110px] '>
@@ -17,7 +71,7 @@ const AdminOverview = () => {
                         <FaBuilding className='text-[35px] text-[#CFA146]'/>
                     <div>
                         <h1 className='text-[#2b2d3a] font-bold'>Number of Hostel</h1>
-                        <h3 className='text-[#2b2d3a] text-[30px]'>5</h3>
+                        <h3 className='text-[#2b2d3a] text-[30px]'>{halls.length}</h3>
                     </div>
                 </div>
 
@@ -25,7 +79,7 @@ const AdminOverview = () => {
                         <IoIosBed className='text-[50px] p-3 text-[#2b2d3a] border-[#CFA146] border-4 rounded-full'/>
                     <div>
                         <h1 className='text-[#2b2d3a] font-bold'>Total Rooms Number</h1>
-                        <h3 className='text-[#2b2d3a] text-[30px]'>450</h3>
+                        <h3 className='text-[#2b2d3a] text-[30px]'>{rooms.length}</h3>
                     </div>
                 </div>
 

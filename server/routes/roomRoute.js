@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router();
 const { v4: uuidv4 } = require("uuid");
 const knex = require("knex");
+const upload = require('../middleware/multer');
+const cloudinary = require('../utils/cloudinary')
 
 
 //-------------------------------------------------------------------- Initialize Knex Config
@@ -40,7 +42,12 @@ router.get('/:id', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-  const { room_number, hall_id, bunk_capacity, bed_space, booked_spaces, is_available, price } = req.body;
+
+  // const result = await cloudinary.uploader.upload(req.file.path);
+  // const room_image = result.secure_url
+
+  const { room_number, hall_id, hall_name, bunk_capacity, bed_space, price, room_image } = req.body;
+
   try {
 
 
@@ -58,9 +65,9 @@ router.post('/', async (req, res) => {
         room_id: uuidv4(),
         room_number,
         hall_id,
+        hall_name,
         bunk_capacity,
         bed_space,
-        booked_spaces,
         price
       })
       .returning('*');

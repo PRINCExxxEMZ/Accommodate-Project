@@ -10,7 +10,7 @@ const BookedHostel = () => {
 
                                                           {/* Booked section  */}
 
-    <section className='mx-5 md:mx-10 lg:mx-10'>
+    <section className='mx-5 md:mx-10 lg:mx-10 lg:mt-10'>
       <h1 className='font-semibold text-[#2b2d3a]'>Booked Rooms</h1>
       <div className='mt-5 mb-10 lg:mb-20 bg-[#CFA146] h-[0.7px]'/>
 

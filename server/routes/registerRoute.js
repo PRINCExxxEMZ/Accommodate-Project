@@ -12,8 +12,9 @@ const db = knex(knexConfig.development);
 //-----------------------------------------------------------------Registration endpoint
 
 router.post('/', async (req, res) => {
-    const { first_name, middle_name, last_name, email, password, role, registration_number, department, is_disabled, level } = req.body;
+    const { first_name, middle_name, last_name, email, password, registration_number, department, is_disabled, level } = req.body;
     console.log(first_name)
+    const role = "Student"
 
     try {
         //-------------------------------------------------------- Check if email already exists
