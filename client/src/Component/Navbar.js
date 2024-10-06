@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import axios from "axios";
@@ -6,7 +7,8 @@ import ReactLoading from "react-loading";
 import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { RiLogoutCircleRLine } from "react-icons/ri";
-
+import { IoIosArrowDown } from "react-icons/io";
+import { useHistory } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -16,6 +18,7 @@ const Navbar = () => {
   let user = JSON.parse(localStorage.getItem("User"));
 
   const [isOOpen, setIsOOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleToggle = () => {
     setIsOOpen(!isOOpen);
@@ -54,6 +57,45 @@ const Navbar = () => {
   //   loginDetails();
   // }, []);
 
+  // const history = useHistory();
+  // history.push('/login');
+  
+  
+  //   const handleLogout = () => {
+  //     // Send logout request to the backend
+  //     axios
+  //       .post('http://localhost:8000/api/logout') // Adjust the URL to your actual backend route
+  //       .then((response) => {
+  //         console.log(response.data.message); // Optional: Handle any message from the backend
+  
+  //         // Remove JWT token from localStorage or wherever it's stored
+  //         localStorage.removeItem('token');
+  
+  //         // Redirect the user to the login page or another page
+  //         history.push('/login'); // Redirect after successful logout
+  //       })
+  //       .catch((error) => {
+  //         console.error('Error logging out:', error);
+  //       });
+  //   };
+
+   
+  
+    const handleLogout = () => {
+      // Clear localStorage, tokens, etc.
+      localStorage.removeItem('token');
+  
+      // Redirect to login page
+      navigate('/login');
+    };
+
+
+
+
+
+
+
+
   return (
     <nav className="bg-[#162029] p-5 fixed z-50 w-full">
       <div className="container mx-auto flex flex-wrap items-center justify-between">
@@ -84,32 +126,35 @@ const Navbar = () => {
         {/* Navigation Links */}
 
         <div
-          className={`w-full flex-grow lg:flex lg:items-center lg:w-auto ${
+          className={`w-full flex-grow lg:flex items-center text-center lg:items-center lg:w-auto ${
             isOpen ? "block" : "hidden"
           }`}
         >
           <div className="text-sm lg:flex-grow text-center lg:text-left">
             <Link
               to="/"
-              className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#0BA75A] mx-4"
+              className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#0BA75A] mx-4 active:text-[#0BA75A]"
             >
               Home{" "}
             </Link>
             <Link
               to="/hostel"
-              className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#0BA75A] mx-4"
+              className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#0BA75A] mx-4 active:text-[#0BA75A]"
             >
               Hostel{" "}
             </Link>
             <Link
               to="/payment"
-              className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#0BA75A] mx-4"
+              className="block mt-4 pb-2 lg:inline-block lg:mt-0 text-white hover:text-[#0BA75A] mx-4 active:text-[#0BA75A]"
             >
               Payment{" "}
             </Link>
-          </div>
 
-          {/* CTA Button */}
+
+
+          </div>
+          {/* User Account and Sign up/In section */}
+
           {user ? (
             <h2 className=" text-white pr-4 hover:cursor-pointer">
               Welcome 
@@ -118,14 +163,14 @@ const Navbar = () => {
                   className="flex items-center text-white hover:text-[#1d623f] pl-1"
                   onClick={handleToggle}
                 >
-                 {firstName} {lastName}
+                 {firstName} {lastName} <IoIosArrowDown/>
                 </button>
                 <div
                   className={`absolute right-0 top-full ${
                     isOOpen ? "block" : "hidden"
                   } w-48 bg-white rounded-lg shadow-md py-2`}
-                > <h2 className=" text-gray-800 py-3 px-5 font-light flex items-center pl-5 hover:bg-gray-800 hover:text-white"> <CgProfile className="mr-2 text-[20px]"/> <Link to= './Profilepage'>Profile</Link> </h2>
-                  <h2 className=" text-gray-800 py-3 px-5 font-light flex items-center pl-5  hover:bg-gray-800 hover:text-white"> <RiLogoutCircleRLine className="mr-2 text-[20px]"/> Logout</h2>
+                ><h2 className=" text-gray-800 py-3 px-5 font-light flex items-center pl-5 hover:bg-gray-800 hover:text-white"> <CgProfile className="mr-2 text-[20px]"/> <Link to= '/profilepage'>Profile</Link> </h2>
+                  <h2  onClick={handleLogout}  className=" text-gray-800 py-3 px-5 font-light flex items-center pl-5  hover:bg-gray-800 hover:text-white"> <RiLogoutCircleRLine className="mr-2 text-[20px]"/> Logout</h2>
                 </div>
               </div>
             </h2>
@@ -145,6 +190,7 @@ const Navbar = () => {
               </Link>
             </div>
           )}
+
         </div>
       </div>
     </nav>

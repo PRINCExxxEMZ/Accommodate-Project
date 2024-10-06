@@ -2,10 +2,10 @@ module.exports = {
     development: {
       client: 'pg',
       connection: {
-        host: 'dpg-cr67s3rqf0us73a14lcg-a.oregon-postgres.render.com',
-        user: 'accommodate_g6u0_user',
-        password: '2fFatag0xbGW1ZtuZLwPvhb6sPcvRS5R',
-        database: 'accommodate_g6u0',
+        host: 'dpg-cs0ten0gph6c73aefa0g-a.oregon-postgres.render.com',
+        user: 'accommodate_mstv_user',
+        password: 'EP8Mu7mHmNLSTx4nY0QqLZm4u1RXI6l7',
+        database: 'accommodate_mstv',
         ssl: { rejectUnauthorized: false } 
       },
       migrations: {
@@ -17,7 +17,40 @@ module.exports = {
     },
   };
 
-  // New DB
+
+
+// New DB Info
+  // postgresql://accommodate_mstv_user:EP8Mu7mHmNLSTx4nY0QqLZm4u1RXI6l7@dpg-cs0ten0gph6c73aefa0g-a/accommodate_mstv
+  // PGPASSWORD=EP8Mu7mHmNLSTx4nY0QqLZm4u1RXI6l7 psql -h 
+  // dpg-cs0ten0gph6c73aefa0g-a.oregon-postgres.render.com -U 
+  // accommodate_mstv_user
+  //  accommodate_mstv
+
+
+
+
+
+
+
+
+
+
+
+  // postgresql://accommodate_hddt_user:9AXNRb9Sn6wpg71fSs1tHK8pVlOIn1qz@dpg-cs0njsjtq21c73egqufg-a/accommodate_hddt
+
+  // PGPASSWORD=
+  // 9AXNRb9Sn6wpg71fSs1tHK8pVlOIn1qz psql -h 
+  // dpg-cs0njsjtq21c73egqufg-a.oregon-postgres.render.com -U 
+  // accommodate_hddt_user 
+  // accommodate_hddt
+
+
+
+
+
+
+
+  // old DB
   // Name of DB: accommodate
   // DB name: accommodate_g6u0
   // DB user: accommodate_g6u0_user

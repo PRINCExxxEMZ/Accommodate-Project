@@ -13,17 +13,16 @@ const CreateHostel = () => {
   const [loading, setLoading] = useState("");
   const [hostelImage, setHostelImage] = useState("");
 
-
   const createHostel = () => {
     if (hallName && gender && numberOfRooms && hostelImage) {
       setLoading(true);
-  
+
       const formData = new FormData();
       formData.append("name", hallName);
       formData.append("gender", gender);
       formData.append("rooms", numberOfRooms);
       formData.append("hall_image", hostelImage);
-  
+
       axios
         .post("http://localhost:8000/api/halls", formData, {
           headers: {
@@ -35,7 +34,10 @@ const CreateHostel = () => {
           console.log("Server response:", response.data);
         })
         .catch((error) => {
-          console.error("Error response:", error.response?.data || error.message);
+          console.error(
+            "Error response:",
+            error.response?.data || error.message
+          );
           toastr.error(
             error.response?.data?.message || "Hostel Already Exists"
           );
@@ -52,7 +54,23 @@ const CreateHostel = () => {
     event.preventDefault();
     createHostel();
   };
-  
+
+  const handleImage = (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    if (!file) return;
+    if (!file.type.includes("image")) {
+      alert("Please upload image!");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const result = reader.result;
+      setHostelImage(result);
+    };
+  };
 
   return (
     <>
@@ -117,15 +135,15 @@ const CreateHostel = () => {
 
           {/* Upload pic button  */}
           <div className="mt-10 mb-10 md:flex justify-between items-center">
-          <div className="mt-4">
-                <label>Upload Hostel Image</label>
-                <input
-                  type="file"
-                  className="pl-4 h-[40px] w-full rounded-md outline-none mt-1"
-                  accept="image/*"
-                  onChange={(event) => setHostelImage(event.target.files[0])}
-                />
-              </div>
+            <div className="mt-4">
+              <label>Upload Hostel Image</label>
+              <input
+                type="file"
+                className="pl-4 h-[40px] w-full rounded-md outline-none mt-1"
+                accept="image/*"
+                onChange={handleImage}
+              />
+            </div>
 
             <div className="bg-[#0BA75A] text-white px-2 py-2  rounded-md hover:bg-[#1d623f] inline-flex items-center gap-x-4">
               <button>Create Hostel</button>

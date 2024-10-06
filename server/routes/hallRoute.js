@@ -1,4 +1,5 @@
 const express = require('express')
+const cloudinary = require('cloudinary').v2
 const router = express.Router();
 const { v4: uuidv4 } = require("uuid");
 const knex = require("knex");
@@ -10,6 +11,12 @@ const db = knex(knexConfig.development);
 
 
 const secret = "your_jwt_secret_key";
+
+cloudinary.config({
+  cloud_name:process.env.CLOUDINARY_CLOUD_NAME,
+  api_secret:process.env.CLOUDINARY_SECRET_KEY,
+  api_key:process.env.CLOUDINARY_CLOUD_API_KEY
+})
 
 
   //-----------------------------------------------------GET all halls
@@ -45,6 +52,9 @@ router.get("/", async (req, res) => {
     console.log(gender)
     console.log(rooms)
     console.log(hall_image)
+    const hallImageUrl = await cloudinary.uploader.upload(hall_image)
+    console.log(hallImageUrl)
+    const hallImage = hallImageUrl.url
     try {
       //------Check if a hall with the same name already exists
       const existingHall = await db('halls').where('name', name).first();
@@ -57,7 +67,9 @@ router.get("/", async (req, res) => {
           hall_id: uuidv4(),
           name,
           gender,
-          rooms
+          rooms,
+          hallImage
+          
         })
         .returning('*');
   

@@ -20,6 +20,7 @@ import Rooms from './Component/Rooms';
 import Payment from './Component/Payment';
 import Checkout from './Pages/Checkout';
 import ProfilePage from './Pages/ProfilePage';
+import LearnMore from './Pages/LearnMore';
 
 
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/fresher' element={<FresherRegister/>}></Route>
         <Route path='/' element={<Hero/>}></Route>
         <Route path='/hostel' element={<Hostel/>}></Route>
+        <Route path='/learnmore' element={<LearnMore/>}></Route>
         <Route path='/allavaliablehostel/:hall_id/:hall_name' element={<AllAvailableHostel/>}></Route>
         <Route path='/rooms/:hall_id/:hall_name' element={<Rooms/>}></Route>
         <Route path='/allbookedhostel' element={<AllBookedHostel/>}></Route>

@@ -30,9 +30,15 @@ const Hero = () => {
             essentials for a great student life. Welcome to your home away from
             home.
           </p>
-          <button className="bg-[#0BA75A] text-white px-5 py-3 rounded-md mt-7 hover:bg-[#1d623f] hover:translate-y-1 transition-transform">
-            <Link to="/hostel">Book Hostel</Link>
-          </button>
+          <div className="flex gap-x-5">
+            <button className="bg-[#0BA75A] text-white px-5 py-2 rounded-sm mt-7 hover:bg-[#1d623f] hover:translate-y-1 transition-transform">
+              <Link to="/hostel">Book Hostel</Link>
+            </button>
+
+            <button className="border border-5 text-white px-5 py-2 rounded-sm mt-7 hover:bg-[#1d623f] hover:translate-y-1 transition-transform">
+              <Link to="/learnmore">Take a Tour</Link>
+            </button>
+          </div>
         </div>
       </section>
 
