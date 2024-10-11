@@ -57,6 +57,7 @@ const Register = () => {
       )
         .catch((error) => {
           toastr.error("Failed Registration");
+          console.error("Error details:", error);
         })
         .finally(() => {
           setLoading(false);
@@ -126,6 +127,7 @@ const Register = () => {
                       <input
                         type="text"
                         placeholder="John"
+                        required
                         className="w-[280px] px-4 py-2 placeholder-sm rounded-md shadow outline-none"
                         value={firstN}
                         onChange={(event) => setFirstN(event.target.value)}
@@ -139,6 +141,7 @@ const Register = () => {
                       <input
                         type="text"
                         placeholder="Wayne"
+                        required
                         className="w-[280px] px-4 py-2 placeholder-sm rounded-md shadow outline-none"
                         value={middleN}
                         onChange={(event) => setMiddleN(event.target.value)}
@@ -152,6 +155,7 @@ const Register = () => {
                       <input
                         type="text"
                         placeholder="Snow"
+                        required
                         className="w-[280px] px-4 py-2 placeholder-sm rounded-md shadow outline-none"
                         value={lastN}
                         onChange={(event) => setLastN(event.target.value)}
@@ -164,6 +168,7 @@ const Register = () => {
                       </p>
                       <input
                         type="text"
+                        required
                         placeholder="adminbouesti@gmail.com"
                         className="w-[280px] px-4 py-2 placeholder-sm rounded-md shadow outline-none"
                         value={email}
@@ -178,6 +183,7 @@ const Register = () => {
                       <input
                         type="text"
                         placeholder="COM/22/0500"
+                        required
                         className="w-full  px-4 py-2 placeholder-sm rounded-md shadow outline-none"
                         value={matric}
                         onChange={(event) => setMatric(event.target.value)}
@@ -191,6 +197,7 @@ const Register = () => {
                       <input
                         type="text"
                         placeholder="Computer Science"
+                        required
                         className="w-[280px] px-4 py-2 placeholder-sm rounded-md shadow outline-none"
                         value={department}
                         onChange={(event) => setDepartment(event.target.value)}
@@ -203,7 +210,8 @@ const Register = () => {
                       </p>
                       <input
                         type="text"
-                        placeholder="adminbouesti@gmail.com"
+                        placeholder="300 level"
+                        required
                         className="w-[280px] px-4 py-2 placeholder-sm rounded-md shadow outline-none"
                         value={level}
                         onChange={(event) => setLevel(event.target.value)}
@@ -216,6 +224,7 @@ const Register = () => {
                       <input
                         type="password"
                         placeholder="*****************"
+                        required
                         className="w-full  px-4 py-2 placeholder-sm rounded-md shadow outline-none"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
@@ -229,6 +238,7 @@ const Register = () => {
                       <input
                         type="password"
                         placeholder="*****************"
+                        required
                         className="w-full  px-4 py-2 placeholder-sm rounded-md shadow outline-none"
                         value={conpassword}
                         onChange={(event) => setConpassword(event.target.value)}

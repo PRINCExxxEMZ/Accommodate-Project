@@ -181,6 +181,12 @@ const HostelDetails = () => {
           >
             Book Now
           </button>
+          <button
+            onClick={checkAvailabilty}
+            className="bg-[#0BA75A] text-[14px] text-white px-5 py-3 rounded-md text-center text-bold hover:bg-[#1d623f] hover:translate-y-1 transition-transform"
+          >
+            Reserve Now
+          </button>
         </div>
       </section>
 
