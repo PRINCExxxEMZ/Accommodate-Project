@@ -19,6 +19,7 @@ module.exports = {
 
 
 
+  
 // New DB Info
   // postgresql://accommodate_mstv_user:EP8Mu7mHmNLSTx4nY0QqLZm4u1RXI6l7@dpg-cs0ten0gph6c73aefa0g-a/accommodate_mstv
   // PGPASSWORD=EP8Mu7mHmNLSTx4nY0QqLZm4u1RXI6l7 psql -h 

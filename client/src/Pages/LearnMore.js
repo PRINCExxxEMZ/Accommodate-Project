@@ -22,8 +22,10 @@ const LearnMore = () => {
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black opacity-30"></div>
 
+
+        {/* w-[316px] top-1/2 transform -translate-y-1/2 translate-x-1/2 absolute z-20 md:w-[450px] lg:mx-[106px] lg:w-[562px] */}
         {/* Content */}
-        <div className="w-[316px] top-1/2 transform -translate-y-1/2 absolute z-20 md:w-[450px] mx-5 lg:mx-[106px] lg:w-[562px]">
+        <div className="p-10 text-center top-1/2 transform -translate-y-1/2 absolute z-20 lg:p-[150px]">
           <h1 className="font-bold text-[25px] text-white lg:text-[35px]">
             Welcome to Bouesti Accommodation{" "}
           </h1>
@@ -36,11 +38,12 @@ const LearnMore = () => {
       </section>
 
       {/* Points */}
-      <section className="">
-        <h1> What we offer</h1>
-        <div className=" bg-[#1d623f] text-white px-4 py-4  justify-center items-center flex gap-x-3 md:gap-x-20 lg:gap-x-80 ">
+      <section className=" items-center text-center">
+        <h1 className="  font-semibold text-[25px] mt-[70px]"> We offer </h1>
+        <h2 className=" text-[18px]  mb-[20px]">At the institue of Bamila Univresity we prid ourself in</h2>
+        <div className=" bg-[#1d623f] text-white px-4 py-4 justify-center items-center flex gap-x-3 lg:gap-x-[20px]">
 
-          <div className="bg-white text-[#1d623f] rounded-[5px] justify-center items-center flex my-2 p-5 px-12 w-[]">
+          <div className="bg-white text-[#1d623f] rounded-[5px] justify-center items-center flex my-2 p-5 px-12 shadow-lg shadow-black">
             <div className="flex flex-col items-center">
               <FaBuilding  className="text-[30px] mb-2"/>
               <h2 className="text-[22px]">5</h2>
@@ -48,7 +51,7 @@ const LearnMore = () => {
             </div>
           </div>
 
-          <div className="bg-white text-[#1d623f] rounded-[5px] justify-center items-center flex my-2 p-5 px-12">
+          <div className="bg-white text-[#1d623f] rounded-[5px] justify-center items-center flex my-2 p-5 px-12 shadow-lg shadow-black">
             <div className="flex flex-col items-center">
               <FaBuilding  className="text-[30px] mb-2"/>
               <h2 className="text-[22px]">700+</h2>
@@ -56,7 +59,7 @@ const LearnMore = () => {
             </div>
           </div>
 
-          <div className="bg-white text-[#1d623f] rounded-[5px] justify-center items-center flex my-2 p-5 px-12">
+          <div className="bg-white text-[#1d623f] rounded-[5px] justify-center items-center flex my-2 p-5 px-12 shadow-lg shadow-black">
             <div className="flex flex-col items-center">
               <FaBuilding  className="text-[30px] mb-2"/>
               <h2 className="text-[22px]">2k</h2>
@@ -67,10 +70,10 @@ const LearnMore = () => {
       </section>
 
       {/* hosel overview details */}
-      <section className="mx-4">
+      <section className=" mt-[100px] mx-6  items-center ">
         <div>
-          <h2>Hostels Halls</h2>
-          <div className="flex gap-x-2">
+          <h2 className=" text-center font-semibold text-[25px]">Hostels Halls</h2>
+          <div className="flex gap-x-2 mx-auto justify-center items-center">
             <button className="text-white px-5 py-2 rounded-sm mt-7 bg-[#1d623f]">
               Hall A
             </button>
@@ -87,9 +90,9 @@ const LearnMore = () => {
               Hall E
             </button>
           </div>
-          <div className="mt-[80px] md:flex lg:flex">
+          <div className="mt-[100px] items-center md:flex lg:flex lg:px-20">
           <div className="">
-            <h3>Hall A</h3>
+            <h3 className="font-bold text-[28px]">Hall A</h3>
             <p>
               Experience a vibrant community, cozy living spaces,and all the
               essentials for a great student life. Welcome to your home away
@@ -116,9 +119,16 @@ const LearnMore = () => {
       {/* Gallery */}
 
       <secton className="">
-        <div>
+        <div className="mt-[100px]">
           <h2 className="text-center"> Gallery </h2>
-          <div className="max-w-[1240px] mx-auto px-4 py-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 "></div>
+          <div className="max-w-[1240px] mx-auto px-4 py-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
+          <img src={hall} className=" rounded-md" />
+          <img src={hall} className=" rounded-md" />
+          <img src={hall} className=" rounded-md" />
+          <img src={hall} className=" rounded-md" />
+          <img src={hall} className=" rounded-md" />
+          <img src={hall} className=" rounded-md" />
+          </div>
         </div>
 
         <h2>Gallery</h2>
