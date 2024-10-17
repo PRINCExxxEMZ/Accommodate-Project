@@ -118,11 +118,11 @@ const HostelDetails = () => {
         )}
         <div>
           <img src={hall} className=" rounded-md" />
-          <div className="flex w-10 space-x-5 mt-5">
+          {/* <div className="flex w-10 space-x-5 mt-5">
             <img src={hall} className=" rounded-md" />
             <img src={hall} className=" rounded-md" />
             <img src={hall} className=" rounded-md" />
-          </div>
+          </div> */}
         </div>
 
         <div className="mt-10 p-2">
@@ -173,6 +173,10 @@ const HostelDetails = () => {
             ))}
           </select>
 
+          <h1 className="text-[#CFA146]">
+          Note: Top Bunks are Even Number While Low Bunks are Odd number
+          </h1>
+
           <span className="text-[#0BA75A] text-[13px]"> Amount </span>
           <h2 className="text-[30px] font-semibold mb-10">{room.price}</h2>
           <button
@@ -183,7 +187,7 @@ const HostelDetails = () => {
           </button>
           <button
             onClick={checkAvailabilty}
-            className="bg-[#0BA75A] text-[14px] text-white px-5 py-3 rounded-md text-center text-bold hover:bg-[#1d623f] hover:translate-y-1 transition-transform"
+            className="bg-[#CFA146] text-[14px] text-white px-5 py-3 rounded-md text-center ml-5 text-bold hover:bg-[#3e3a14] hover:translate-y-1 transition-transform"
           >
             Reserve Now
           </button>

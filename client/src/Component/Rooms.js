@@ -8,6 +8,8 @@ import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import axios from "axios";
 import ReactLoading from "react-loading";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 
 const Rooms = () => {
@@ -48,6 +50,8 @@ const Rooms = () => {
 
   return (
     <>
+
+    <Navbar/>
       {/* Available Room section  */}
       <section className="mx-5 md:mx-10 lg:mx-10 pt-20 lg:pt-40">
         <div className="lg:flex lg:items-center lg:justify-between">
@@ -65,7 +69,7 @@ const Rooms = () => {
         )}
 
           <div className="flex gap-4 items-center">
-                    <h1 className="text-[#CFA146] font-[20px]">{hallNameParam}</h1>
+                    <h1 className="text-[#CFA146] font-bold text-[30px]">{hallNameParam}</h1>
           </div>
         </div>
         <div className="mt-5 bg-[#CFA146] h-[0.7px]"/>
@@ -106,6 +110,8 @@ const Rooms = () => {
        ))}
         </section>
       </div>
+
+      <Footer/>
     </>
   );
 };

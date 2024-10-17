@@ -11,14 +11,14 @@ const CreateHostel = () => {
   const [gender, setGender] = useState("");
   const [numberOfRooms, setNumberOfRooms] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [hostelImage, setHostelImage] = useState(null); 
+  // const [hostelImage, setHostelImage] = useState(null);
 
   // const handleFileChange = (event) => {
   //   setSelectedFiles([...event.target.files]);
   // };
 
-  const createHostel = () => {
-    if (hallName && gender && numberOfRooms ) {
+  const createHostel =  async () => {
+    if (hallName && gender && numberOfRooms) {
       setLoading(true);
 
       const formData = new FormData();
@@ -27,10 +27,10 @@ const CreateHostel = () => {
       formData.append("rooms", numberOfRooms);
       // formData.append("hall_image", hostelImage);
 
-      axios
+      await axios
         .post("http://localhost:8000/api/halls", formData, {
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
           },
         })
         .then((response) => {
@@ -38,7 +38,10 @@ const CreateHostel = () => {
           console.log("Server response:", response.data);
         })
         .catch((error) => {
-          console.error("Error response:", error.response?.data || error.message);
+          console.error(
+            "Error response:",
+            error.response?.data || error.message
+          );
           toastr.error(
             error.response?.data?.message || "Hostel Already Exists"
           );
@@ -129,26 +132,23 @@ const CreateHostel = () => {
             />
           </div>
 
-<div className="flex justify-between items-center">
+          <div className="flex justify-between items-center">
+            {/* Upload Hostel Image */}
+            <div className="mt-10 mb-10">
+              <label>Upload Hostel Image</label>
+              <input
+                type="file"
+                className="pl-4 h-[40px] w-full rounded-md outline-none mt-1"
+                accept="image/*"
+                // onChange={handleImageChange}
+              />
+            </div>
 
-
-          {/* Upload Hostel Image */}
-          <div className="mt-10 mb-10">
-            <label>Upload Hostel Image</label>
-            <input
-              type="file"
-              className="pl-4 h-[40px] w-full rounded-md outline-none mt-1"
-              accept="image/*"
-              // onChange={handleImageChange}
-            />
-          </div>
-
-          {/* Submit Button */}
-          <div className="bg-[#0BA75A] h-10 text-white px-2 py-2 rounded-md hover:bg-[#1d623f] inline-flex items-center gap-x-4">
-            <button type="submit">Create Hostel</button>
-            <IoIosAddCircle className="text-[20px]" />
-          </div>
-
+            {/* Submit Button */}
+            <div className="bg-[#0BA75A] h-10 text-white px-2 py-2 rounded-md hover:bg-[#1d623f] inline-flex items-center gap-x-4">
+              <button type="submit">Create Hostel</button>
+              <IoIosAddCircle className="text-[20px]" />
+            </div>
           </div>
         </form>
       </section>

@@ -31,7 +31,7 @@ router.get('/:id', async (req, res) => {
 
 // POST (Create) a new hall
 router.post('/', async (req, res) => {
-  const { name, gender, rooms } = req.body;
+  const { name, gender, rooms } = await req.body;
   
   // Add logging to see what the frontend is sending
   console.log("Request body:", req.body);
