@@ -29,9 +29,9 @@ const Rooms = () => {
      async function fetchRooms() {
       try {
         setLoading(true);
-
         const response = await axios.get("http://localhost:8000/api/rooms");
         setRooms(response.data);
+        console.log(response.data)
         setLoading(false);
       } catch (error) {
         toastr.error("Error retrieving Hostel");
@@ -81,7 +81,7 @@ const Rooms = () => {
           {/* CARD Design  */}
           {filteredRooms && filteredRooms.map((room, index) => (
           <div className="bg-white shadow-md rounded-lg overflow-hidden lg:gap-x-5 p-5  hover:shadow-[#0BA75A]">
-            <img src={hall} className=" rounded-md" />
+            <img src={room.room_image} className=" rounded-md" />
             <div>
               <h1 className="font-semibold text-[14px] text-[#CFA146] mt-4">
               {hallNameParam}

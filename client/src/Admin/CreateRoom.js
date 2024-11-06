@@ -65,6 +65,7 @@ const CreateRoom = () => {
           clearForm();
         })
         .catch((error) => {
+          console.log(error)
           toastr.error("Room Already Exist");
         })
         .finally(() => {
@@ -74,6 +75,21 @@ const CreateRoom = () => {
       toastr.error("Please fill in all required fields.");
     }
   };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (!file.type.includes("image")) {
+      toastr.error("Unsupported file format!");
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const result = reader.result;
+      setRoom_image(result);
+    };
+  };
+
 
   //Submit Handler
   const handleSubmit = (event) => {
@@ -197,7 +213,7 @@ const CreateRoom = () => {
                 type="file"
                 className="pl-4 h-[40px] w-full rounded-md outline-none mt-1"
                 accept="image/*"
-                onChange={(event) => setRoom_image(event.target.files[0])}
+                onChange={handleImageChange}
               />
             </div>
             {/* <div className="mb-10">

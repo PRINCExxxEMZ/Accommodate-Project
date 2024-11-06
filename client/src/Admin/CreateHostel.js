@@ -11,21 +11,22 @@ const CreateHostel = () => {
   const [gender, setGender] = useState("");
   const [numberOfRooms, setNumberOfRooms] = useState("");
   const [loading, setLoading] = useState(false);
+  const [hostelImage, setHostelImage] = useState("");
   // const [hostelImage, setHostelImage] = useState(null);
 
   // const handleFileChange = (event) => {
   //   setSelectedFiles([...event.target.files]);
   // };
 
-  const createHostel =  async () => {
-    if (hallName && gender && numberOfRooms) {
+  const createHostel = async () => {
+    if (hallName && gender && numberOfRooms && hostelImage) {
       setLoading(true);
 
       const formData = new FormData();
       formData.append("name", hallName);
       formData.append("gender", gender);
       formData.append("rooms", numberOfRooms);
-      // formData.append("hall_image", hostelImage);
+      formData.append("hall_image", hostelImage);
 
       await axios
         .post("http://localhost:8000/api/halls", formData, {
@@ -65,6 +66,20 @@ const CreateHostel = () => {
   //     setHostelImage(file);
   //   }
   // };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (!file.type.includes("image")) {
+      toastr.error("Unsupported file format!");
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const result = reader.result;
+      setHostelImage(result);
+    };
+  };
 
   return (
     <>
@@ -140,7 +155,7 @@ const CreateHostel = () => {
                 type="file"
                 className="pl-4 h-[40px] w-full rounded-md outline-none mt-1"
                 accept="image/*"
-                // onChange={handleImageChange}
+                onChange={handleImageChange}
               />
             </div>
 

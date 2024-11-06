@@ -21,6 +21,9 @@ import Payment from './Component/Payment';
 import Checkout from './Pages/Checkout';
 import ProfilePage from './Pages/ProfilePage';
 import LearnMore from './Pages/LearnMore';
+import StudentOverview from './Component/StudentOverview';
+import AdminStudent from './Admin/AdminStudent';
+import AdminStudentsDetails from './Admin/AdminStudentsDetails';
 
 
 
@@ -41,7 +44,7 @@ function App() {
         <Route path='/allavaliablehostel/:hall_id/:hall_name' element={<AllAvailableHostel/>}></Route>
         <Route path='/rooms/:hall_id/:hall_name' element={<Rooms/>}></Route>
         <Route path='/allbookedhostel' element={<AllBookedHostel/>}></Route>
-        <Route path='/profilepage' element={<ProfilePage/>}></Route>
+        <Route path='/profilepage/:id' element={<ProfilePage/>}></Route>
         <Route path='/hosteldetails/:room_id' element={<HostelDetails/>}></Route>
         <Route path='/payment/:room_id' element={<Payment/>}></Route>
         <Route path='/checkout/:email/:hall_name/:room_number/:price/:user_id/:room_id/:bed_number' element={<Checkout/>}></Route>
@@ -56,6 +59,8 @@ function App() {
         <Route path='/adminhostel' element={<AdminHostel/>}></Route>
         <Route path='/createroom' element={<CreateRoom/>}></Route>
         <Route path='/createhostel' element={<CreateHostel/>}></Route>
+        <Route path='/studentoverview' element={<AdminStudent/>}></Route>
+        <Route path='/studentdetails' element={<AdminStudentsDetails/>}></Route>
         <Route path='/adminpaymentdetails' element={<AdminPayment/>}></Route>
 
 

@@ -2,10 +2,10 @@ module.exports = {
     development: {
       client: 'pg',
       connection: {
-        host: 'dpg-cs0ten0gph6c73aefa0g-a.oregon-postgres.render.com',
-        user: 'accommodate_mstv_user',
-        password: 'EP8Mu7mHmNLSTx4nY0QqLZm4u1RXI6l7',
-        database: 'accommodate_mstv',
+        host: 'dpg-csld46rtq21c73egtk5g-a.oregon-postgres.render.com',
+        user: 'accommodate_hehm_user',
+        password: 'I2hVp8NW38NzPNwQiWqWOdjRMAdtFicy',
+        database: 'accommodate_hehm',
         ssl: { rejectUnauthorized: false } 
       },
       migrations: {
@@ -19,8 +19,19 @@ module.exports = {
 
 
 
+  // Updated DB 
+  // postgresql://accommodate_hehm_user:I2hVp8NW38NzPNwQiWqWOdjRMAdtFicy@dpg-csld46rtq21c73egtk5g-a/accommodate_hehm
+  // PGPASSWORD=I2hVp8NW38NzPNwQiWqWOdjRMAdtFicy psql -h 
+  // dpg-csld46rtq21c73egtk5g-a.oregon-postgres.render.com -U 
+  // accommodate_hehm_user 
+  // accommodate_hehm
   
-  
+
+
+
+
+
+
 // New DB Info
   // postgresql://accommodate_mstv_user:EP8Mu7mHmNLSTx4nY0QqLZm4u1RXI6l7@dpg-cs0ten0gph6c73aefa0g-a/accommodate_mstv
   // PGPASSWORD=EP8Mu7mHmNLSTx4nY0QqLZm4u1RXI6l7 psql -h 
