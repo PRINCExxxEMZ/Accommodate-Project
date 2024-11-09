@@ -55,7 +55,7 @@ const HostelHall = () => {
                 <h2 className="text-[13px] font-medium text-[#0BA75A]">
                   {hall.gender}
                 </h2>
-                <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-md mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
+                <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
                   <Link to={`/rooms/${hall.hall_id}/${hall.name}`}>
                     Book Hostel
                   </Link>

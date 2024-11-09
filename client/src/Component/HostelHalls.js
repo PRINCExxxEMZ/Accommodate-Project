@@ -119,17 +119,22 @@ const HostelHalls = () => {
             Hall E
           </button>
         </div>
+
+        {/* Hostel Details Section  */}
         <div className="mt-[100px] items-center md:flex lg:flex lg:px-[130px] justify-between">
           <div>
             <h3 className="lg:font-bold text-[28px]">{hallDetails.title}</h3>
             <p className="lg:w-[400px]">{hallDetails.description}</p>
             <ul>
               {hallDetails.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
+                <div className='flex items-center gap-x-2 py-2'>
+                  <div className='w-2 h-2 rounded-md border  border-[#CFA146]'></div>
+                  <li key={index}>{feature}</li>
+                </div>
               ))}
             </ul>
             <button className="border border-5 text-white px-5 py-2 my-5 rounded-sm mt-7 bg-[#1d623f] hover:translate-y-1 transition-transform">
-              <a href="/">Book Now</a>
+              <a href="/hostel">Book Now</a>
             </button>
           </div>
           <div>
