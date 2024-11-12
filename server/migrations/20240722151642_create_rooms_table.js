@@ -9,6 +9,7 @@ exports.up = function(knex) {
       table.integer('booked_spaces');
       table.integer('price');
       table.string('room_image');
+      table.string('hall_name');
       table.boolean('is_available').defaultTo(true);
     });
   };

@@ -1,8 +1,8 @@
 // migrations/{timestamp}_create_reserve_table.js
 exports.up = function(knex) {
-    return knex.schema.createTable('rooms', function(table) {
+    return knex.schema.createTable('reserve', function(table) {
       table.uuid('id').primary();
-      table.uuid('student_id').references(‘student_id).inTable(‘students);
+      table.uuid('student_id').references('id').inTable('users');
       table.uuid('hall_id').references('hall_id').inTable('halls');
       table.uuid('room_id').references('room_id').inTable('rooms');
       table.integer('bed_space');
@@ -12,5 +12,5 @@ exports.up = function(knex) {
   };
   
   exports.down = function(knex) {
-    return knex.schema.dropTable('rooms');
+    return knex.schema.dropTable('reserve');
   };
