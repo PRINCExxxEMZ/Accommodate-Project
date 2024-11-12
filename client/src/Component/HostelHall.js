@@ -49,10 +49,10 @@ const HostelHall = () => {
             <div className="bg-white shadow-md rounded-lg overflow-hidden lg:gap-x-5 p-5 hover:shadow-[#0BA75A]">
               <img src={hall.hall_image || img} className=" rounded-md" />
               <div>
-                <h1 className="font-semibold text-[14px] text-[#CFA146] mt-4">
+                <h1 className="font-semibold text-[14px] text-[#CFA146] mt-4 uppercase">
                   {hall.name}
                 </h1>
-                <h2 className="text-[13px] font-medium text-[#0BA75A]">
+                <h2 className="text-[13px] font-medium text-[#0BA75A] uppercase">
                   {hall.gender}
                 </h2>
                 <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">

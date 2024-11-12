@@ -29,12 +29,12 @@ const AdminHostel = () => {
 
                                                                   {/* Create CTA btn  */}
         <div className='flex gap-x-10 float-right mt-[95px] mx-5 lg:mx-10'>
-            <div className='bg-[#0BA75A] text-white rounded-md hover:bg-[#1d623f]  inline-flex items-center gap-x-1 px-2 py-1'>
+            <div className='bg-[#0BA75A] text-white rounded-sm hover:bg-[#1d623f]  inline-flex items-center gap-x-1 px-2 py-1'>
                 <Link to='/createhostel'>Create Hostel</Link>
                 <IoIosAddCircle className='text-[20px]' />
             </div>
 
-            <div className='bg-[#CFA146] text-white rounded-md hover:bg-[#c39538] inline-flex items-center gap-x-1 px-2 py-1'>
+            <div className='bg-[#CFA146] text-white rounded-sm hover:bg-[#c39538] inline-flex items-center gap-x-1 px-2 py-1'>
                 <Link to='/createroom'>Create Room</Link>
                 <IoIosAddCircle className='text-[20px]' />
             </div>

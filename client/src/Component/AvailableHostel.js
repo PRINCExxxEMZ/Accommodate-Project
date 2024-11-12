@@ -103,12 +103,12 @@ const AvailableHostel = () => {
           {/* CARD Design  */}
           {rooms.map((room, index) => (
           <div className="bg-white shadow-md rounded-lg overflow-hidden lg:gap-x-5 p-5 pb-5  hover:shadow-[#0BA75A]">
-            <img src={hall} className=" rounded-md" />
+            <img src={hall.hall_image || hall} className=" rounded-md" />
             <div>
-              <h1 className="font-semibold text-[14px] text-[#CFA146] mt-4">
+              <h1 className="font-semibold text-[14px] text-[#CFA146] mt-4 uppercase">
               {room.hall_name}
               </h1>
-              <h2 className="text-[13px] font-semibold">Room {room.room_number} </h2>
+              <h2 className="text-[13px] font-semibold uppercase">Room {room.room_number} </h2>
               <h2 className="text-[13px] font-medium text-[#0BA75A]">
                {room.gender}
               </h2>
@@ -124,7 +124,7 @@ const AvailableHostel = () => {
               </div>
               <span className="text-[#0BA75A] text-[13px]"> Amount </span>
               <h2>{room.price}</h2>
-              <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-md mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
+              <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
                 <Link to={`/hosteldetails/${room.room_id}`}>Book Hostel</Link>
               </button>
             </div>

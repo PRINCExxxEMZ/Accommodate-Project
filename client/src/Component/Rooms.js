@@ -15,7 +15,6 @@ import Footer from "./Footer";
 const Rooms = () => {
   const {hall_id: hallIdParam} = useParams();
   const {hall_name: hallNameParam} = useParams();
-  
   const [rooms, setRooms] = useState([]);
   const [hall_id, setHall_id] = useState("");
   const [halls, setHalls] = useState([]);
@@ -69,14 +68,14 @@ const Rooms = () => {
         )}
 
           <div className="flex gap-4 items-center">
-                    <h1 className="text-[#CFA146] font-bold text-[30px]">{hallNameParam}</h1>
+                    <h1 className="text-[#CFA146] font-bold text-[30px] uppercase">{hallNameParam}</h1>
           </div>
         </div>
         <div className="mt-5 bg-[#CFA146] h-[0.7px]"/>
       </section>
 
       {/* Room cards  */}
-      <div className="mx-5 md:mx-10 lg:mx-10 overflow-hidden">
+      <div className="mx-5 my-5 md:mx-10 md:my-10 lg:mx-10 lg:my-10 overflow-hidden">
         <section className=" mt-10 lg:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-8">
           {/* CARD Design  */}
           {filteredRooms && filteredRooms.map((room, index) => (
@@ -102,7 +101,7 @@ const Rooms = () => {
               </div>
               <span className="text-[#0BA75A] text-[13px]"> Amount </span>
               <h2>{room.price}</h2>
-              <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-md mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
+              <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
                 <Link to={`/hosteldetails/${room.room_id}`}>Book Hostel</Link>
               </button>
             </div>
