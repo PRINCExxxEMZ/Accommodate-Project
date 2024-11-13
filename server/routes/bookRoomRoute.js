@@ -81,7 +81,7 @@ router.post('/', async (req, res) => {
     if (booked_bed) {
       return res.status(400).json({ error: 'Bed has already been booked' });
     }
-
+    
     // Insert the new booking
     const [newBooking] = await db('booked_room')
       .insert({
@@ -106,6 +106,85 @@ router.post('/', async (req, res) => {
     res.status(201).json(newBooking);
   } catch (error) {
     res.status(500).json({ error: 'Failed to book room' });
+  }
+});
+
+
+
+// Reserve Room 
+router.post('/reserve', async (req, res) => {
+  const { hall_id, room_id, student_id, bed_space } = req.body;
+  console.log("error_1")
+  try {
+    const booked_student = await db('booked_room').where('student_id', student_id).first();
+    
+    if (booked_student) {
+      return res.status(400).json({ error: 'Student has already booked a room' });
+    }
+    console.log("error_2")
+    // Check if the room is available
+    const room = await db('rooms').where('room_id', room_id).first();
+
+
+    if (!room) {
+      return res.status(404).json({ error: 'Room not found' });
+    }
+    if (!room.is_available) {
+      return res.status(400).json({ error: 'Room is full' });
+    }
+    console.log("error_3")
+    
+    const booked_bed = await db('booked_room').where({ room: room_id, bed_number:bed_space}).first();
+    
+        if (booked_bed) {
+          return res.status(400).json({ error: 'Bed has already been booked' });
+        }
+
+    console.log("error_4")
+    const reserved_room = await db('reserve').where('student_id', student_id).first();
+    
+        if (reserved_room) {
+          return res.status(400).json({ error: 'Student cannot reserve a room twice' });
+        }
+
+
+    // Insert the new reserve booking
+    const [newReserve] = await db('reserve')
+      .insert({
+        id: uuidv4(),
+        student_id,
+        hall_id,
+        room_id,
+        bed_space,
+
+      })
+      .returning('*');
+
+    res.status(201).json(newReserve);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to reserve a room' });
+  }
+});
+
+
+
+// Reserve or Booked Room Details 
+router.get('/api/bookings', async (req, res) => {
+  try {
+    const bookings = await knex('bookings')
+      .select(
+        'student_id',
+        'hall_id',
+        'room_id',
+        'bed_space',
+        'reserved_at',
+        'expire_at'
+      );
+    res.json(bookings);
+  } catch (error) {
+    console.log("Error_2")
+    console.error("Error fetching booking data:", error);
+    res.status(500).json({ error: "Failed to fetch booking data" });
   }
 });
 

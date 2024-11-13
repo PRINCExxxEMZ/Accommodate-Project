@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import hall from "../Assest/01 (6).jpg";
-import { Link } from "react-router-dom";
 import { GiBunkBeds } from "react-icons/gi";
 import { FaBed } from "react-icons/fa6";
 import Navbar from "../Component/Navbar";
@@ -22,6 +21,8 @@ const HostelDetails = () => {
   const [loading, setLoading] = useState("");
   const [bedNumber, setBedNumber] = useState("");
   const [booked_room, setBookedRooms] = useState([]);
+
+  const [bookings, setBookings] = useState([]);
 
   const navigate = useNavigate();
   let user = JSON.parse(localStorage.getItem("User"));
@@ -98,6 +99,26 @@ const HostelDetails = () => {
     }
   };
 
+  // Fetch Reserve Room Details
+   useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        console.log("Error_1")
+        const response = await axios.get("http://localhost:8000/api/bookings");
+        setBookings(response.data);
+        console.log(response.data);
+
+      } catch (error) {
+        toastr.error("Error fetching Reserve Details", error);
+        setLoading(false);
+      }
+    };
+
+    fetchBookings();
+  }, []);
+
+
+
   return (
     <>
       {/* Navbar  */}
@@ -130,6 +151,9 @@ const HostelDetails = () => {
             {hallNameParam}
           </h1>
           <hr />
+
+          <div className="flex gap-x-10">
+              {/* Booked Room indicator */}
           <div className="flex items-center align-middle gap-5 my-5">
             <h2>Booked Bed</h2>
             <div className="flex gap-x-5">
@@ -138,9 +162,27 @@ const HostelDetails = () => {
               <h1 className="h-8 w-8 pt-1 rounded-full mx-auto my-auto bg-[#d44540] text-white flex justify-center align-items-center">
                 {room.bed_number}
               </h1>
+              
               ))}
             
             </div>
+            </div>
+                {/* Reserved Room indicator */}
+          <div className="flex items-center align-middle gap-5 my-5">
+            <h2>Reserved Bed</h2>
+            <div className="flex gap-x-5">
+              {filteredRoom.map((room, index)=>(
+
+              <h1 className="h-8 w-8 pt-1 rounded-full mx-auto my-auto bg-[#CFA146] text-white flex justify-center align-items-center">
+                {room.bed_number}
+              </h1>
+              
+              ))}
+            
+            </div>
+            </div>
+
+
           </div>
           <h2 className="bg-[#E7F6EE] p-3 rounded-md">Room Details</h2>
           <h2 className="font-semibold text-[15px] my-2">Room {room.room_number}</h2>
@@ -181,13 +223,13 @@ const HostelDetails = () => {
           <h2 className="text-[30px] font-semibold mb-10">{room.price}</h2>
           <button
             onClick={checkAvailabilty}
-            className="bg-[#0BA75A] text-[14px] text-white px-5 py-3 rounded-md text-center text-bold hover:bg-[#1d623f] hover:translate-y-1 transition-transform"
+            className="bg-[#0BA75A] text-[14px] text-white px-5 py-3 rounded-sm text-center text-bold hover:bg-[#1d623f] hover:translate-y-1 transition-transform"
           >
             Book Now
           </button>
           <button
             onClick={checkAvailabilty}
-            className="bg-[#CFA146] text-[14px] text-white px-5 py-3 rounded-md text-center ml-5 text-bold hover:bg-[#3e3a14] hover:translate-y-1 transition-transform"
+            className="bg-[#CFA146] text-[14px] text-white px-5 py-3 rounded-sm text-center ml-5 text-bold hover:bg-[#3e3a14] hover:translate-y-1 transition-transform"
           >
             Reserve Now
           </button>
