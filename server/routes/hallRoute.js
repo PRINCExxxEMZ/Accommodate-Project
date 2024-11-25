@@ -22,6 +22,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+
 // GET a specific hall by ID
 router.get("/:id", async (req, res) => {
   try {
