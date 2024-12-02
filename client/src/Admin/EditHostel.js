@@ -5,23 +5,33 @@ import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import axios from "axios";
 import ReactLoading from "react-loading";
+import { useParams } from "react-router-dom";
 
 const EditHostel = ({ hostelData }) => {
+  const { hostel_id } = useParams();
   const [hallName, setHallName] = useState("");
   const [gender, setGender] = useState("");
   const [numberOfRooms, setNumberOfRooms] = useState("");
   const [hostelImage, setHostelImage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [hostel, setHostel] = useState("");
 
-  // Preload existing hostel data
   useEffect(() => {
-    if (hostelData) {
-      setHallName(hostelData.name || "");
-      setGender(hostelData.gender || "");
-      setNumberOfRooms(hostelData.rooms || "");
-      setHostelImage(hostelData.hall_image || "");
-    }
-  }, [hostelData]);
+    const getHostel = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/halls/${hostel_id}`);
+        console.log(response.data)
+        setHostel(response.data);
+        setHallName(hostel.name);
+        setGender(hostel.gender );
+        setNumberOfRooms(hostel.rooms);
+        setHostelImage(hostel.hall_image);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getHostel();
+  }, [hostel_id]);
 
   const updateHostel = async () => {
     if (hallName && gender && numberOfRooms && hostelImage) {
@@ -34,7 +44,7 @@ const EditHostel = ({ hostelData }) => {
       formData.append("hall_image", hostelImage);
 
       await axios
-        .put(`http://localhost:8000/api/halls/${hostelData.id}`, formData, {
+        .put(`http://localhost:8000/api/halls/${hostel_id}`, formData, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -159,7 +169,7 @@ const EditHostel = ({ hostelData }) => {
 
             {/* Submit Button */}
             <div className="bg-[#0BA75A] h-10 text-white px-2 py-2 rounded-md hover:bg-[#1d623f] inline-flex items-center gap-x-4">
-              <button type="submit">Save Changes</button>
+              <button type="submit">Save</button>
               <IoIosSave className="text-[20px]" />
             </div>
           </div>

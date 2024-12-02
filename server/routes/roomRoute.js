@@ -102,7 +102,9 @@ router.put("/:id", async (req, res) => {
     bed_space,
     booked_spaces,
     is_available,
+    price
   } = req.body;
+  console.log(req.body)
   try {
     const count = await db("rooms").where("room_id", req.params.id).update({
       room_number,
@@ -111,7 +113,9 @@ router.put("/:id", async (req, res) => {
       bed_space,
       booked_spaces,
       is_available,
+      price
     });
+    console.log(count)
     if (count) {
       res.json({ message: "Room updated successfully" });
     } else {

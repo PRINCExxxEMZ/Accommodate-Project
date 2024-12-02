@@ -4,13 +4,25 @@ const knex = require('knex');
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcryptjs');
 const knexConfig = require('../knexfile');
-const db = knex(knexConfig.development);
+const db = knex(knexConfig.development)
 
-
-//-----------------------------------------------------GET User Profile (Protected Route)
-router.get('/:id',  async (req, res) => {
+//-----------------------------------------------------GET All Users
+router.get('/', async (req, res) => {
   try {
-    // Assuming the id is passed in the URL
+    // Retrieve all users from the database
+    const users = await db('users').select('id', 'first_name', 'last_name', 'registration_number', 'department', 'level');
+
+    res.status(200).json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to retrieve users' });
+  }
+});
+
+
+//-----------------------------------------------------GET User by ID
+router.get('/:id', async (req, res) => {
+  try {
     const { id } = req.params;
 
     // Retrieve user details from the database by their unique id
@@ -23,18 +35,38 @@ router.get('/:id',  async (req, res) => {
     // Don't return the password to the client
     const { password, ...userProfile } = user;
 
-    // Respond with the user profile data
     res.status(200).json(userProfile);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to retrieve user profile' });
+    res.status(500).json({ error: 'Failed to retrieve user' });
+  }
+});
+
+//-----------------------------------------------------DELETE User by ID
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Check if the user exists
+    const user = await db('users').where({ id }).first();
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Delete the user
+    await db('users').where({ id }).del();
+
+    res.status(200).json({ message: 'User deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to delete user' });
   }
 });
 
 //-----------------------------------------------------PUT (Update) User Profile
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
-  const { first_name, middle_name, last_name, password,  registration_number, department,  level } = req.body;
+  const { first_name, middle_name, last_name, password, registration_number, department, level } = req.body;
 
   try {
     // Fetch the user to update by id

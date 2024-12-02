@@ -24,6 +24,8 @@ import LearnMore from './Pages/LearnMore';
 import StudentOverview from './Component/StudentOverview';
 import AdminStudent from './Admin/AdminStudent';
 import AdminStudentsDetails from './Admin/AdminStudentsDetails';
+import EditHostel from './Admin/EditHostel';
+import EditRoom from './Admin/EditRoom';
 
 
 
@@ -62,6 +64,8 @@ function App() {
         <Route path='/studentoverview' element={<AdminStudent/>}></Route>
         <Route path='/studentdetails' element={<AdminStudentsDetails/>}></Route>
         <Route path='/adminpaymentdetails' element={<AdminPayment/>}></Route>
+        <Route path='/editHostel/:hostel_id' element={<EditHostel />}></Route>
+        <Route path='/editRoom/:room_id' element={<EditRoom />}></Route>
 
 
 

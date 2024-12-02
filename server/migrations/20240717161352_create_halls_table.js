@@ -6,6 +6,7 @@ exports.up = function(knex) {
       table.string('gender');
       table.string('rooms');
       table.string('hall_image');
+      
     });
   };
   

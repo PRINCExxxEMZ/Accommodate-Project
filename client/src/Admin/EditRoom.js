@@ -5,8 +5,10 @@ import { IoMdSave } from "react-icons/io";
 import Navbar from "./Navbar";
 import axios from "axios";
 import ReactLoading from "react-loading";
+import { useParams } from "react-router-dom";
 
 const EditRoom = ({ roomId }) => {
+  const { room_id } = useParams();
   const [hall_id, setHall_id] = useState("");
   const [hall_name, setHall_name] = useState("");
   const [room_number, setRoom_number] = useState("");
@@ -16,29 +18,7 @@ const EditRoom = ({ roomId }) => {
   const [loading, setLoading] = useState(false);
   const [halls, setHalls] = useState([]);
   const [room_image, setRoom_image] = useState("");
-
-  // Load room details
-  useEffect(() => {
-    const fetchRoomDetails = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(`http://localhost:8000/api/rooms/${roomId}`);
-        const room = response.data;
-        setHall_id(room.hall_id);
-        setHall_name(room.hall_name);
-        setRoom_number(room.room_number);
-        setBunk_capacity(room.bunk_capacity);
-        setBed_space(room.bed_space);
-        setPrice(room.price);
-        setRoom_image(room.room_image);
-      } catch (error) {
-        toastr.error("Failed to load room details.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchRoomDetails();
-  }, [roomId]);
+  const [room, setRoom] = useState("");
 
   // Fetch hostels
   useEffect(() => {
@@ -53,6 +33,28 @@ const EditRoom = ({ roomId }) => {
     fetchHostels();
   }, []);
 
+  useEffect(() => {
+    const getRoom = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8000/api/rooms/${room_id}`
+        );
+        console.log(response.data);
+        setRoom(response.data);
+        setHall_id(room.hall_id);
+        setHall_name(room.hall_name);
+        setRoom_number(room.room_number);
+        setBunk_capacity(room.bunk_capacity);
+        setBed_space(room.bed_space);
+        setPrice(room.price);
+        setRoom_image(room.room_image);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (room_id) getRoom();
+  }, [room_id]);
+
   // Update room details
   const updateRoom = () => {
     if (hall_id) {
@@ -60,7 +62,7 @@ const EditRoom = ({ roomId }) => {
 
       const updatedRoom = {
         hall_id,
-        hall_name,
+        hall_name: room.hall_name,
         room_number,
         bunk_capacity,
         bed_space,
@@ -69,7 +71,7 @@ const EditRoom = ({ roomId }) => {
       };
 
       axios
-        .put(`http://localhost:8000/api/rooms/${roomId}`, updatedRoom)
+        .put(`http://localhost:8000/api/rooms/${room_id}`, updatedRoom)
         .then(() => {
           toastr.success("Room updated successfully!");
         })
@@ -115,34 +117,24 @@ const EditRoom = ({ roomId }) => {
 
         {loading && (
           <div className="z-50 absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
-            <ReactLoading type={"bars"} color={"#ffffff"} height={100} width={100} />
+            <ReactLoading
+              type={"bars"}
+              color={"#ffffff"}
+              height={100}
+              width={100}
+            />
           </div>
         )}
 
         <form onSubmit={handleSubmit}>
           <div>
             <p className="text-[14px] text-[#425466] mb-2">Hostel</p>
-            <select
-              id="dropdown"
-              className="block w-full text-[#2b2d3a] p-3 border-none rounded-md shadow leading-tight focus:outline-none focus:shadow-outline my-5"
-              value={hall_id}
-              onChange={(event) => {
-                const selectedHall = halls.find(
-                  (hall) => hall.hall_id === event.target.value
-                );
-                if (selectedHall) {
-                  setHall_id(selectedHall.hall_id);
-                  setHall_name(selectedHall.name);
-                }
-              }}
-            >
-              <option value="">Select Hostel</option>
-              {halls.map((hall, index) => (
-                <option key={index} value={hall.hall_id}>
-                  {hall.name}
-                </option>
-              ))}
-            </select>
+            <input
+              type="text"
+              placeholder="Hall name"
+              className="w-full mb-7 px-4 py-2 placeholder-sm rounded-md shadow outline-none"
+              value={room.hall_name}
+            />
           </div>
 
           <div className="flex flex-col gap-2">
@@ -168,7 +160,9 @@ const EditRoom = ({ roomId }) => {
           </div>
 
           <div className="flex flex-col gap-2">
-            <p className="text-[14px] text-[#425466] mb-2">Number of Bed Spaces</p>
+            <p className="text-[14px] text-[#425466] mb-2">
+              Number of Bed Spaces
+            </p>
             <input
               type="number"
               placeholder="4"
@@ -199,7 +193,7 @@ const EditRoom = ({ roomId }) => {
           </div>
 
           <div className="bg-[#0BA75A] text-white px-2 py-2 rounded-md hover:bg-[#1d623f] inline-flex items-center gap-x-4">
-            <button type="submit">Update Room</button>
+            <button type="submit">Update</button>
             <IoMdSave className="text-[20px]" />
           </div>
         </form>
