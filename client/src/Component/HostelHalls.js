@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import hallAImage from '../Assest/01 (6).jpg'; 
-import hallBImage from '../Assest/01 (6).jpg';
-import hallCImage from '../Assest/01 (6).jpg';
-import hallDImage from '../Assest/01 (6).jpg';
-import hallEImage from '../Assest/01 (6).jpg';
+import hallAImage from '../Assest/Hostel_Images/Hall_A1.jpg'; 
+import hallBImage from '../Assest/Hostel_Images/Hall_B1.jpg';
+import hallCImage from '../Assest/Hostel_Images/Hall_C1.jpg';
+import hallDImage from '../Assest/Hostel_Images/Hall_D_Main.jpg';
+import hallEImage from '../Assest/Hostel_Images/Hall_E1.jpg';
 
 const HostelHalls = () => {
   const [selectedHall, setSelectedHall] = useState('Hall A');
@@ -138,7 +138,7 @@ const HostelHalls = () => {
             </button>
           </div>
           <div>
-            <img src={hallDetails.image} alt={hallDetails.title} className="rounded-md" />
+            <img src={hallDetails.image} alt={hallDetails.title} className="rounded-md lg: w-[650px]" />
           </div>
         </div>
       </div>

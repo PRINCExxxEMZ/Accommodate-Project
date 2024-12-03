@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve halls" });
   }
 });
-
+ 
 // GET a specific hall by ID
 router.get("/:id", async (req, res) => {
   try {

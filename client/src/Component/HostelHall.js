@@ -82,7 +82,7 @@ const HostelHall = () => {
                       Book Hostel
                     </Link>
                   </button>
-                  <button className="bg-[#CFA146] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]">
+                  {/* <button className="bg-[#CFA146] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]">
                     <Link to={`/EditHostel/${hall.hall_id}`}>Edit</Link>
                   </button>
                   <button
@@ -90,7 +90,7 @@ const HostelHall = () => {
                     className="bg-[#863e21] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]"
                   >
                     Delete
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

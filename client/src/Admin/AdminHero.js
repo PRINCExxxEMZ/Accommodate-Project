@@ -1,4 +1,5 @@
-import React from 'react'
+// import React from 'react'
+import React, { useEffect } from "react";
 import img from '../Assest/Admin.jpg'
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar';
@@ -6,9 +7,13 @@ import Footer from '../Component/Footer';
 import AvailableHostel from '../Component/AvailableHostel';
 import BookedHostel from '../Component/BookedHostel';
 import AdminOverview from '../Component/AdminOverview';
+import AdminRooms from "./AdminRooms";
 
 
 const AdminHero = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top on component mount
+  }, []);
   return (
     <>
                                                          {/* Navbar Section  */}
@@ -37,7 +42,8 @@ const AdminHero = () => {
     <AdminOverview/>
 
                                                     {/* Available Hostel section  */}
-    <AvailableHostel/>
+    {/* <AvailableHostel/> */}
+    <AdminRooms/>
 
                                                           {/* Booked section  */}
     <BookedHostel/>

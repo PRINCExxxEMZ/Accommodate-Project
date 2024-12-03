@@ -45,7 +45,7 @@ const AvailableHostel = () => {
 
   return (
     <>
-      {/* Available Hostel section  */}
+      {/* Available Hostel/Rooms section  */}
       <section className="mx-5 md:mx-10 lg:mx-10 pt-20 lg:pt-30">
         <div className="lg:flex lg:items-center lg:justify-between">
           <h1 className="font-semibold text-[#2b2d3a] pb-5">Avaliable Rooms</h1>
@@ -97,13 +97,13 @@ const AvailableHostel = () => {
         <div className="mt-5 bg-[#CFA146] h-[0.7px]"/>
       </section>
 
-      {/* hostel cards  */}
+      {/* Rooms cards  */}
       <div className="mx-5 md:mx-10 lg:mx-10 overflow-hidden">
         <section className=" mt-10 lg:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-8">
           {/* CARD Design  */}
           {rooms.map((room, index) => (
           <div className="bg-white shadow-md rounded-lg overflow-hidden lg:gap-x-5 p-5 pb-5  hover:shadow-[#0BA75A]">
-            <img src={hall.hall_image || hall} className=" rounded-md" />
+            <img src={room.room_image || hall} className=" rounded-md" />
             <div>
               <h1 className="font-semibold text-[14px] text-[#CFA146] mt-4 uppercase">
               {room.hall_name}

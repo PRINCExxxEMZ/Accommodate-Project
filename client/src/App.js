@@ -26,6 +26,9 @@ import AdminStudent from './Admin/AdminStudent';
 import AdminStudentsDetails from './Admin/AdminStudentsDetails';
 import EditHostel from './Admin/EditHostel';
 import EditRoom from './Admin/EditRoom';
+import AdminHostelHall from './Admin/AdminHostelHall';
+import AdminRoomDetails from './Admin/AdminRoomDetails';
+import ScrollToTop from "./ScrollToTop";
 
 
 
@@ -33,6 +36,7 @@ function App() {
   return (
     <div>
       <Router>
+      <ScrollToTop />
       <Routes>
         
                                                   {/* User Section  */}
@@ -63,6 +67,8 @@ function App() {
         <Route path='/createhostel' element={<CreateHostel/>}></Route>
         <Route path='/studentoverview' element={<AdminStudent/>}></Route>
         <Route path='/studentdetails' element={<AdminStudentsDetails/>}></Route>
+        <Route path='/adminhostelhall' element={<AdminHostelHall/>}></Route>
+        <Route path='/adminroomdetails/:room_id' element={<AdminRoomDetails/>}></Route>
         <Route path='/adminpaymentdetails' element={<AdminPayment/>}></Route>
         <Route path='/editHostel/:hostel_id' element={<EditHostel />}></Route>
         <Route path='/editRoom/:room_id' element={<EditRoom />}></Route>

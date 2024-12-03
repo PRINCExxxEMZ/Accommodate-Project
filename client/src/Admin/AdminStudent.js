@@ -4,6 +4,7 @@ import StudentOverview from '../Component/StudentOverview'
 import Footer from '../Component/Footer'
 
 const AdminStudent = () => {
+ 
   return (
     <div>
         <Navbar/>

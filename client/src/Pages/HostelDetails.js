@@ -141,11 +141,6 @@ const HostelDetails = () => {
         )}
         <div>
           <img src={room.room_image} className=" rounded-md" />
-          {/* <div className="flex w-10 space-x-5 mt-5">
-            <img src={hall} className=" rounded-md" />
-            <img src={hall} className=" rounded-md" />
-            <img src={hall} className=" rounded-md" />
-          </div> */}
         </div>
 
         <div className="mt-10 p-2">
@@ -233,12 +228,14 @@ const HostelDetails = () => {
           >
             Reserve Now
           </button>
-          <button
+
+          {/* <button
             onClick={handleEdit}
             className="bg-[#CFA146] text-[14px] text-white px-5 py-3 rounded-sm text-center ml-5 text-bold hover:bg-[#3e3a14] hover:translate-y-1 transition-transform"
           >
             Edit
-          </button>
+          </button> */}
+          
         </div>
       </section>
 

@@ -7,6 +7,8 @@ import BookedHostel from '../Component/BookedHostel'
 import { IoIosAddCircle } from "react-icons/io";
 import AdminOverview from '../Component/AdminOverview'
 import HostelHall from '../Component/HostelHall'
+import AdminHostelHall from './AdminHostelHall'
+import AdminRooms from './AdminRooms'
 
 
 const AdminHostel = () => {
@@ -43,13 +45,14 @@ const AdminHostel = () => {
     
    
                                                                    {/* Hostel Cards  */}
-     <HostelHall/>
+     <AdminHostelHall/>
 
     </section>
 
                                                                 {/* Avaliable Component  */}
       
-      <AvailableHostel/>
+      {/* <AvailableHostel/> */}
+      <AdminRooms/>
 
       
                                                                   {/* Booked Component   */}
