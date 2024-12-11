@@ -2,10 +2,10 @@ module.exports = {
     development: {
       client: 'pg',
       connection: {
-        host: 'dpg-csld46rtq21c73egtk5g-a.oregon-postgres.render.com',
-        user: 'accommodate_hehm_user',
-        password: 'I2hVp8NW38NzPNwQiWqWOdjRMAdtFicy',
-        database: 'accommodate_hehm',
+        host: 'dpg-ctal7maj1k6c738n453g-a.oregon-postgres.render.com',
+        user: 'accommodate_f7p2_user',
+        password: 'nohufYo7G10MmM7hUFElSkKTIzZAGIB0',
+        database: 'accommodate_f7p2',
         ssl: { rejectUnauthorized: false } 
       },
       migrations: {
@@ -16,6 +16,16 @@ module.exports = {
       },
     },
   };
+
+
+
+
+  // New Updated DB
+  // PGPASSWORD=nohufYo7G10MmM7hUFElSkKTIzZAGIB0 psql -h 
+  // dpg-ctal7maj1k6c738n453g-a.oregon-postgres.render.com -U 
+  // accommodate_f7p2_user 
+  // accommodate_f7p2
+
 
 
 

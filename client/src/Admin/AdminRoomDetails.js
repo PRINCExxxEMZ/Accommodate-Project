@@ -109,23 +109,6 @@ const AdminRoomDetails = () => {
     navigate(`/EditRoom/${room.room_id}`);
   };
 
-
-// Fetch Reserve Room Details
-// useEffect(() => {
-//     const fetchBookings = async () => {
-//       try {
-//         // console.log("Error_1")
-//         const response = await axios.get("http://localhost:8000/api/bookings");
-//         setBookings(response.data);
-//         console.log(response.data);
-//       } catch (error) {
-//         toastr.error("Error fetching Reserve Details", error);
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchBookings();
-//   }, []);
  
   return (
     <>

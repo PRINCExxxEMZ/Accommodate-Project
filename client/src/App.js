@@ -29,6 +29,7 @@ import EditRoom from './Admin/EditRoom';
 import AdminHostelHall from './Admin/AdminHostelHall';
 import AdminRoomDetails from './Admin/AdminRoomDetails';
 import ScrollToTop from "./ScrollToTop";
+import Reserve from './Pages/Reserve';
 
 
 
@@ -54,7 +55,7 @@ function App() {
         <Route path='/hosteldetails/:room_id' element={<HostelDetails/>}></Route>
         <Route path='/payment/:room_id' element={<Payment/>}></Route>
         <Route path='/checkout/:email/:hall_name/:room_number/:price/:user_id/:room_id/:bed_number' element={<Checkout/>}></Route>
-
+        <Route path='/reserve' element={<Reserve/>}></Route>
 
         <Route path='/paymentdetails' element={<PaymentD/>}></Route>
 
@@ -76,7 +77,7 @@ function App() {
 
 
         {/* Work sheet  */}
-        <Route path='/demo' element={<Demo/>}></Route>
+        {/* <Route path='/demo' element={<Demo/>}></Route> */}
 
       </Routes>
       </Router>

@@ -57,15 +57,15 @@ const AdminHostelHall = () => {
         </div>
       )}
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-y-8 gap-x-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-y-8 gap-x-6">
         {halls.map((hall) => (
           <div
             key={hall.hall_id}
-            className="bg-white shadow-md rounded-lg overflow-hidden lg:gap-x-5 p-5 hover:shadow-[#0BA75A]"
+            className="bg-white shadow-md rounded-lg overflow-hidden lg:gap-x-5 p-4 hover:shadow-[#0BA75A]"
           >
             <img src={hall.hall_image || img} className="rounded-md" alt="Hostel" />
             <div>
-              <h1 className="font-semibold text-[14px] text-[#CFA146] mt-4 uppercase">
+              <h1 className="font-semibold md:text-[14px] text-[#CFA146] mt-4 uppercase">
                 {hall.name}
               </h1>
               <div className="flex justify-between mt-2">
@@ -77,7 +77,7 @@ const AdminHostelHall = () => {
               </h2>
               </div>
               <div className="flex gap-2">
-                <button className="bg-[#0BA75A] text-[14px] text-white px-2 py-1 rounded-sm mt-4 hover:bg-[#1d623f]">
+                <button className="bg-[#0BA75A] text-[10px] md:text-[14px] text-white px-2 py-1 rounded-sm mt-4 hover:bg-[#1d623f]">
                   <Link to={`/rooms/${hall.hall_id}/${hall.name}`}>
                     Book Hostel
                   </Link>

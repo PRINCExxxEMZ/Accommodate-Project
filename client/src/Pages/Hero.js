@@ -35,7 +35,7 @@ const Hero = () => {
               <Link to="/hostel">Book Hostel</Link>
             </button>
 
-            <button className="border border-5 text-white px-5 py-2 rounded-sm mt-7 hover:bg-[#1d623f] hover:translate-y-1 transition-transform">
+            <button className="border  text-white px-5 py-2 rounded-sm mt-7 hover:bg-[#1d623f] hover:translate-y-1 transition-transform">
               <Link to="/learnmore">Take a Tour</Link>
             </button>
           </div>

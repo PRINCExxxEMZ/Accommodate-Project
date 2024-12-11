@@ -22,11 +22,13 @@ const Checkout = () => {
 
   const navigate = useNavigate();
 
-  const publicKey = "pk_test_22fcf5175bcc5c57ad1d8f8488223c55468f06f7"; // Replace with your Paystack public key
+  //Paystack public key
+  const publicKey = "pk_test_22fcf5175bcc5c57ad1d8f8488223c55468f06f7"; 
 
+  // converting to kobo
   const componentProps = {
     email: emailParam,
-    amount: priceParam * 100, // converting to kobo
+    amount: priceParam * 100, 
     metadata: {
       name: emailParam,
     },
@@ -94,7 +96,7 @@ const Checkout = () => {
               <h3>Number Of Bunks: </h3>
               <GiBunkBeds className="text-[#CFA146] text-[27px]" />
               {/* <p className="text-[14px] font-light">{room.bunk_capacity}</p> */}
-              <p className="text-[14px] font-light">5</p>
+              <p className="text-[14px] font-light">4</p>
             </div>
             <div className="flex gap-x-3 items-center py-5">
             <h3>Number Of Bed Space: </h3>
