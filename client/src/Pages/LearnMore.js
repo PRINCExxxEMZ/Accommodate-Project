@@ -11,10 +11,11 @@ import Navbar from "../Component/Navbar";
 import img from "../Assest/Tour_Hero.jpg";
 import user from "../Assest/User.png";
 import hall from "../Assest/Hostel_Images/Hall_D_front.jpg";
-import hall_1 from "../Assest/Hostel_Images/Alumini_MMain.jpg";
-import Cophall from "../Assest/Hostel_Images/Cooperative Building.jpg";
-import Lib from "../Assest/Hostel_Images/Lib.jpg";
-import Hallb from "../Assest/Hostel_Images/Hall_B.jpg";
+import Read from "../Assest/Hostel_Images/Reading_Hall.jpg";
+import Cophall from "../Assest/Hostel_Images/Hall_C.jpg";
+import Lib from "../Assest/Hostel_Images/Lib_2.jpg";
+import Health from "../Assest/Hostel_Images/Health_Center.jpg";
+import view from "../Assest/Hostel_Images/View.jpg";
 import Footer from "../Component/Footer";
 import HostelHalls from "../Component/HostelHalls";
 
@@ -158,14 +159,7 @@ const LearnMore = () => {
             <div className="relative inline-block">
               <img src={Cophall} alt="Hall Image" className="rounded-md" />
               <div className="absolute top-4 left-4 bg-[#CFA146] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                Cooperative Hostel
-              </div>
-            </div>
-
-            <div className="relative inline-block">
-              <img src={hall_1} alt="Hall Image" className="rounded-md" />
-              <div className="absolute top-4 left-4 bg-[#CFA146] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                Alumin Hostel
+                Hall C
               </div>
             </div>
 
@@ -177,25 +171,33 @@ const LearnMore = () => {
             </div>
 
             <div className="relative inline-block">
-              <img src={Hallb} alt="Hall Image" className="rounded-md" />
+              <img src={view} alt="Hall Image" className="rounded-md" />
               <div className="absolute top-4 left-4 bg-[#CFA146] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                Alumin Hostel
+                Acadamy Hall
               </div>
             </div>
 
             <div className="relative inline-block">
-              <img src={hall} alt="Hall Image" className="rounded-md" />
+              <img src={Health} alt="Hall Image" className="rounded-md" />
               <div className="absolute top-4 left-4 bg-[#CFA146] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                Alumin Hostel
+                Health Center
+              </div>
+            </div>
+
+            <div className="relative inline-block">
+              <img src={Read} alt="Hall Image" className="rounded-md" />
+              <div className="absolute top-4 left-4 bg-[#CFA146] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                Reading Hall
               </div>
             </div>
           </div>
         </div>
       </secton>
 
-      <h2 className=""></h2>
+    <section>
       <div className="my-40 mx-10 md:mx-[200px] shadow-black shadow-sm rounded-md">
-        <Slider {...settings}>
+      <h2 className=" pt-10 text-center lg:font-semibold text-[25px]">Testimonial</h2>
+        <Slider {...settings} className="">
           <div className="p-10 md:p-14 text-center md:w-[200px]">
             <div className="lg:justify-center">
               <img src={user} alt="user" className="mx-auto h-10" />
@@ -306,6 +308,7 @@ const LearnMore = () => {
           </div>
         </Slider>
       </div>
+    </section>
 
       <Footer />
     </>
