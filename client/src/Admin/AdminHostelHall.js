@@ -78,8 +78,8 @@ const AdminHostelHall = () => {
               </div>
               <div className="flex gap-2">
                 <button className="bg-[#0BA75A] text-[10px] md:text-[14px] text-white px-2 py-1 rounded-sm mt-4 hover:bg-[#1d623f]">
-                  <Link to={`/rooms/${hall.hall_id}/${hall.name}`}>
-                    Book Hostel
+                  <Link to={`/adminallroom/${hall.hall_id}/${hall.name}`}>
+                    Veiw Details
                   </Link>
                 </button>
                 <button className="bg-[#CFA146] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]">

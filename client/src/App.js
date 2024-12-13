@@ -30,6 +30,7 @@ import AdminHostelHall from './Admin/AdminHostelHall';
 import AdminRoomDetails from './Admin/AdminRoomDetails';
 import ScrollToTop from "./ScrollToTop";
 import Reserve from './Pages/Reserve';
+import AdminAllRoom from './Admin/AdminAllRoom';
 
 
 
@@ -55,7 +56,7 @@ function App() {
         <Route path='/hosteldetails/:room_id' element={<HostelDetails/>}></Route>
         <Route path='/payment/:room_id' element={<Payment/>}></Route>
         <Route path='/checkout/:email/:hall_name/:room_number/:price/:user_id/:room_id/:bed_number' element={<Checkout/>}></Route>
-        <Route path='/reserve' element={<Reserve/>}></Route>
+        <Route path='/reserve/:email/:hall_name/:room_number/:price/:user_id/:room_id/:bed_number' element={<Reserve/>}></Route>
 
         <Route path='/paymentdetails' element={<PaymentD/>}></Route>
 
@@ -73,6 +74,7 @@ function App() {
         <Route path='/adminpaymentdetails' element={<AdminPayment/>}></Route>
         <Route path='/editHostel/:hostel_id' element={<EditHostel />}></Route>
         <Route path='/editRoom/:room_id' element={<EditRoom />}></Route>
+        <Route path='/adminallroom/:hall_id/:hall_name' element={<AdminAllRoom/>}></Route>
 
 
 

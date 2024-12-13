@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import hall from "../Assest/01 (6).jpg";
 import { GiBunkBeds } from "react-icons/gi";
 import { FaBed } from "react-icons/fa6";
-import Navbar from "../Component/Navbar";
+import Navbar from "../Admin/Navbar";
 import AvailableHostel from "../Component/AvailableHostel";
 import BookedHostel from "../Component/BookedHostel";
 import Footer from "../Component/Footer";

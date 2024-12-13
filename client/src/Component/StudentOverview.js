@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { FaNairaSign } from "react-icons/fa6";
 
 const StudentOverview = () => {
   const [users, setUsers] = useState([]);
   const [bookedRoom, setBookedRoom] = useState([]);
   const [roomId, setRoomId] = useState("");
   const [studentId, setStudentId] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     const getUsers = async () => {
       const response = await axios.get("http://localhost:8000/api/profile");
@@ -44,11 +46,12 @@ const StudentOverview = () => {
     getStudent();
   }, []);
 
-  
   useEffect(() => {
     const getStudent = async () => {
-      const response = await axios.get(`http://localhost:8000/api/profile/${studentId}`)
-      console.log(response.data)
+      const response = await axios.get(
+        `http://localhost:8000/api/profile/${studentId}`
+      );
+      console.log(response.data);
     };
     getStudent();
   }, []);
@@ -63,7 +66,12 @@ const StudentOverview = () => {
     getRoom();
   }, [roomId]);
 
-
+  // Filter users based on search term
+  const filteredUsers = users.filter((user) =>
+    user.registration_number
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
@@ -75,7 +83,9 @@ const StudentOverview = () => {
           <div className="flex items-center gap-x-5 mb-5">
             <input
               type="text"
-              placeholder="Matric Number"
+              placeholder="Search Registration Number"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="bg-[#E7F6EE]  text-[#2b2d3a]  w-[250px] p-2 border-none rounded-md"
             />
             <FiSearch className="text-[#CFA146] text-[25px]" />
@@ -93,19 +103,10 @@ const StudentOverview = () => {
                     Student Matric Or Registration Number
                   </th>
                   <th className="px-5 py-5 border-gray-200 bg-[#E7F6EE] text-left text-xs font-semibold text-[#2b2d3a] uppercase tracking-wider">
-                    Session
-                  </th>
-                  <th className="px-20 py-5 border-gray-200 bg-[#E7F6EE] text-left text-xs font-semibold text-[#2b2d3a] uppercase tracking-wider">
-                    Hostel
+                    Level
                   </th>
                   <th className="px-5 py-3 border-gray-200 bg-[#E7F6EE] text-left text-xs font-semibold text-[#2b2d3a] uppercase tracking-wider">
                     Amount
-                  </th>
-                  <th className="px-5 py-3 border-gray-200 bg-[#E7F6EE] text-left text-xs font-semibold text-[#2b2d3a] uppercase tracking-wider">
-                    Accomodation Status
-                  </th>
-                  <th className="px-5 py-3 border-gray-200 bg-[#E7F6EE] text-left text-xs font-semibold text-[#2b2d3a] uppercase tracking-wider">
-                    Action
                   </th>
                 </tr>
               </thead>
@@ -113,7 +114,7 @@ const StudentOverview = () => {
                 {users.map((user, index) => (
                   <tr key={index}>
                     <td className="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
-                      {index}
+                      {index + 1}
                     </td>
                     <td className="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
                       {user.registration_number}
@@ -122,16 +123,10 @@ const StudentOverview = () => {
                       {user.level}
                     </td>
                     <td className="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
-                      Hall A, Female Hostel, Room 23, Top-Buck1
-                    </td>
-                    <td className="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
-                      #50,000.00
-                    </td>
-                    <td className="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
-                      Admitted
-                    </td>
-                    <td className="px-5 py-5 border-2 border-gray-200 bg-white text-[#CFA146] text-sm hover:bg-[#1d623f] hover:text-white hover:cursor-default">
-                      <Link to="/studentdetails">View More</Link>
+                      <div className="flex gap-x-1 items-center">
+                        <FaNairaSign />
+                        50,000.00
+                      </div>
                     </td>
                   </tr>
                 ))}

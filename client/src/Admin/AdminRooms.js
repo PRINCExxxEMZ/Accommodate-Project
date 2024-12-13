@@ -156,9 +156,7 @@ const AdminRooms = () => {
                   <button
                    onClick={() => handleDelete(room.room_id)}
                    className="bg-[#863e21] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#d26337]  hover:cursor-pointer cursor-default">
-                    {/* <Link to={`/hosteldetails/${room.room_id}`}> */}
                         Delete
-                    {/* </Link> */}
                   </button>
                 </div>
               </div>

@@ -17,6 +17,7 @@ const Checkout = () => {
   const { bed_number: bed_numberParam } = useParams();
   const { hall_name: hallNameParam } = useParams();
   const { room_number: roomNumberParam } = useParams();
+  const { bunk_capacity: bunkCapacityParam } = useParams();
   const { price: priceParam } = useParams();
   const [loading, setLoading] = useState("");
 
@@ -95,8 +96,7 @@ const Checkout = () => {
             <div className="flex gap-x-3 items-center">
               <h3>Number Of Bunks: </h3>
               <GiBunkBeds className="text-[#CFA146] text-[27px]" />
-              {/* <p className="text-[14px] font-light">{room.bunk_capacity}</p> */}
-              <p className="text-[14px] font-light">4</p>
+              <p className="text-[14px] font-light">{bunkCapacityParam}</p>
             </div>
             <div className="flex gap-x-3 items-center py-5">
             <h3>Number Of Bed Space: </h3>

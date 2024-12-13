@@ -39,8 +39,8 @@ const Navbar = () => {
             Hostel</Link> 
            <Link to='/studentoverview' className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#0BA75A] mx-4">
             Student Overview</Link> 
-           <Link to='/adminpayment' className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#0BA75A] mx-4">
-           Payment</Link>
+           {/* <Link to='/adminpayment' className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-[#0BA75A] mx-4">
+           Payment</Link> */}
           </div>
 
           {/* CTA Button */}
