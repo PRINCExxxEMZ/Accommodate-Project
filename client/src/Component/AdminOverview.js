@@ -12,6 +12,8 @@ const AdminOverview = () => {
 
     const [halls, setHalls] = useState([]);
     const [rooms, setRooms] = useState([]);
+    
+
     const [loading, setLoading] = useState("");
 
       // Fetch Rooms
@@ -56,6 +58,9 @@ const AdminOverview = () => {
     hostels();
   }, []);
 
+    // Calculate available and booked rooms
+    const availableRooms = rooms.filter((room) => room.is_available).length;
+    const bookedRooms = rooms.length - availableRooms;
 
   
 
@@ -87,7 +92,7 @@ const AdminOverview = () => {
                         <MdBedroomChild className='text-[50px] text-[#0BA75A]'/>
                     <div>
                         <h1 className='text-[#2b2d3a] font-bold'>Avaliable Rooms</h1>
-                        <h3 className='text-[#2b2d3a] text-[30px]'>14</h3>
+                        <h3 className='text-[#2b2d3a] text-[30px]'>{availableRooms}</h3>
                     </div>
                 </div>
 
@@ -95,7 +100,7 @@ const AdminOverview = () => {
                         <MdOutlineBedroomChild className='text-[50px] text-[#d44540]'/>
                     <div>
                         <h1 className='text-[#2b2d3a] font-bold'>Booked Rooms</h1>
-                        <h3 className='text-[#2b2d3a] text-[30px]'>4</h3>
+                        <h3 className='text-[#2b2d3a] text-[30px]'>{bookedRooms}</h3>
                     </div>
                 </div>
 

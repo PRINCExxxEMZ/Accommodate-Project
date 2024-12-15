@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GiBunkBeds } from "react-icons/gi";
 import { FaBed } from "react-icons/fa6";
+import { FaNairaSign } from "react-icons/fa6";
 import Navbar from "../Component/Navbar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -84,7 +85,7 @@ const Checkout = () => {
           </h1>
           <h1 className="mx-5 py-5 lg:px-[88px]">
             {" "}
-            Hall Name: <span className="font-semibold"> {hallNameParam} </span>
+            Hall Name: <span className="font-semibold uppercase"> {hallNameParam} </span>
           </h1>
           <h2 className="mx-5 lg:px-[88px]">
             {" "}
@@ -94,19 +95,22 @@ const Checkout = () => {
         
           <div className="flex-col gap-x-5 mx-5 py-5 lg:px-[88px]">
             <div className="flex gap-x-3 items-center">
-              <h3>Number Of Bunks: </h3>
+              {/* <h3>Number Of Bunks: </h3>
               <GiBunkBeds className="text-[#CFA146] text-[27px]" />
-              <p className="text-[14px] font-light">{bunkCapacityParam}</p>
+              <p className="font-semibold ">{bunkCapacityParam} 4</p> */}
             </div>
             <div className="flex gap-x-3 items-center py-5">
             <h3>Number Of Bed Space: </h3>
               <FaBed className="text-[#CFA146] text-[27px]" />
               {/* <p className="text-[14px] font-light">{room.bed_space}</p> */}
-              <p className="text-[14px] font-light">{bed_numberParam}</p>
+              <p className="font-semibold">{bed_numberParam}</p>
             </div>
             <div className="">
               <h3 className="text-sm text-[#CFA146]">Amount:</h3>
-              <h2 className="text-[30px] font-semibold mb-10">{priceParam}</h2>
+               <div className="flex gap-x-1">
+                 <FaNairaSign className="text-[30px] mt-[7px]"/>
+                 <h2 className="text-[30px] font-semibold mb-10">{priceParam}</h2>
+              </div>
             </div>
           </div>
         </div>

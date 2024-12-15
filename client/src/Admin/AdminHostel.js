@@ -56,7 +56,7 @@ const AdminHostel = () => {
 
       
                                                                   {/* Booked Component   */}
-      <BookedHostel/>
+      {/* <BookedHostel/> */}
 
      
                                                                   {/* Footer Component   */}

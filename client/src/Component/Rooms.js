@@ -20,10 +20,10 @@ const Rooms = () => {
   const [halls, setHalls] = useState([]);
   const [loading, setLoading] = useState("");
 
-  console.log(hallIdParam)
+  // console.log(hallIdParam)
 
 
-     // Fetch Rooms
+  // Fetch Rooms
     useEffect(() => {
      async function fetchRooms() {
       try {
@@ -46,6 +46,7 @@ const Rooms = () => {
 
   // Filter rooms based on roomParams
   const filteredRooms = rooms.filter(room => room.hall_id.includes(hallIdParam));
+
 
   return (
     <>
@@ -99,11 +100,30 @@ const Rooms = () => {
                   <p className="text-[14px] font-light">{room.bed_space}</p>
                 </div>
               </div>
+              <p className="text-[14px] font-light pt-2">
+                      Available Beds: {room.bed_space - room.booked_space}
+              </p>
               <span className="text-[#0BA75A] text-[13px]"> Amount </span>
               <h2>{room.price}</h2>
-              <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
+
+              <button
+                  className={`text-[14px] text-white px-3 py-1 rounded-sm mt-4 ${
+                    room.is_available
+                      ? "bg-[#0BA75A] hover:bg-[#1d623f]"
+                      : "bg-gray-400 cursor-not-allowed"
+                  }`}
+                  disabled={!room.is_available}
+                >
+                  {room.is_available ? (
+                    <Link to={`/hosteldetails/${room.room_id}`}>Book Hostel</Link>
+                  ) : (
+                    "Fully Booked"
+                  )}
+                </button>
+              {/* <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
                 <Link to={`/hosteldetails/${room.room_id}`}>Book Hostel</Link>
-              </button>
+              </button> */}
+
             </div>
           </div>
        ))}

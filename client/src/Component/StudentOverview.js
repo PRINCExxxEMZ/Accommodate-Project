@@ -100,6 +100,12 @@ const StudentOverview = () => {
                     S/N
                   </th>
                   <th className="px-5 py-5 border-gray-200 bg-[#E7F6EE] text-left text-xs font-semibold text-[#2b2d3a] uppercase tracking-wider">
+                    First Name
+                  </th>
+                  <th className="px-5 py-5 border-gray-200 bg-[#E7F6EE] text-left text-xs font-semibold text-[#2b2d3a] uppercase tracking-wider">
+                    Last Name
+                  </th>
+                  <th className="px-5 py-5 border-gray-200 bg-[#E7F6EE] text-left text-xs font-semibold text-[#2b2d3a] uppercase tracking-wider">
                     Student Matric Or Registration Number
                   </th>
                   <th className="px-5 py-5 border-gray-200 bg-[#E7F6EE] text-left text-xs font-semibold text-[#2b2d3a] uppercase tracking-wider">
@@ -115,6 +121,12 @@ const StudentOverview = () => {
                   <tr key={index}>
                     <td className="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
                       {index + 1}
+                    </td>
+                    <td className="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
+                      {user.first_name}
+                    </td>
+                    <td className="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
+                      {user.last_name}
                     </td>
                     <td className="px-5 py-5 border-2 border-gray-200 bg-white text-sm">
                       {user.registration_number}

@@ -173,7 +173,7 @@ const LearnMore = () => {
             <div className="relative inline-block">
               <img src={view} alt="Hall Image" className="rounded-md" />
               <div className="absolute top-4 left-4 bg-[#CFA146] text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                Acadamy Hall
+                Academy Hall
               </div>
             </div>
 

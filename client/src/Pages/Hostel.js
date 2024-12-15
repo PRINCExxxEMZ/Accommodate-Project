@@ -23,7 +23,7 @@ const Hostel = () => {
 
 
                                                              {/* Booked section   */}
-      <BookedHostel/>
+      {/* <BookedHostel/> */}
 
 
                                                               {/* Footer section  */}

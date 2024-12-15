@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { GiBunkBeds } from "react-icons/gi";
 import { FaBed } from "react-icons/fa6";
+import { FaDoorOpen } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
@@ -37,31 +38,32 @@ const AdminRooms = () => {
     fetchRooms();
   }, []);
 
- 
-
   // Delete Function
   const handleDelete = async (room_id) => {
     try {
       setLoading(true);
       await axios.delete(`http://localhost:8000/api/rooms/${room_id}`);
-      setRooms((prevRooms) => prevRooms.filter((room) => room.room_id !== room_id));
+      setRooms((prevRooms) =>
+        prevRooms.filter((room) => room.room_id !== room_id)
+      );
       toastr.success("Room deleted successfully");
     } catch (error) {
-      console.error("Error deleting room:", error.response?.data || error.message);
+      console.error(
+        "Error deleting room:",
+        error.response?.data || error.message
+      );
       toastr.error("Failed to delete room");
     } finally {
       setLoading(false);
     }
   };
 
-
-
   return (
     <>
       {/* Available Hostel/Rooms section  */}
       <section className="mx-5 md:mx-10 lg:mx-10 pt-20 lg:pt-30">
         <div className="lg:flex lg:items-center lg:justify-between">
-          <h1 className="font-semibold text-[#2b2d3a] pb-5">Avaliable Rooms</h1>
+          <h1 className="font-semibold text-[#2b2d3a] pb-5">All Rooms</h1>
 
           {loading && (
             <div className=" z-50 absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
@@ -149,14 +151,29 @@ const AdminRooms = () => {
                     </Link>
                   </button>
                   <button className="bg-[#CFA146] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#a77f2f] hover:cursor-pointer cursor-default">
-                    <Link to={`/hosteldetails/${room.room_id}`}>
-                        Edit
-                    </Link>
+                    <Link to={`/hosteldetails/${room.room_id}`}>Edit</Link>
                   </button>
                   <button
-                   onClick={() => handleDelete(room.room_id)}
-                   className="bg-[#863e21] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#d26337]  hover:cursor-pointer cursor-default">
-                        Delete
+                    onClick={() => handleDelete(room.room_id)}
+                    className="bg-[#863e21] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#d26337]  hover:cursor-pointer cursor-default"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    className={`text-[14px] text-white px-3 py-1 rounded-sm mt-4 ${
+                      room.is_available
+                        ? "bg-[#0BA75A] hover:bg-[#1d623f]"
+                        : "bg-gray-400 cursor-not-allowed"
+                    }`}
+                    disabled={!room.is_available}
+                  >
+                    {room.is_available ? (
+                      <Link to={`/hosteldetails/${room.room_id}`}>
+                        Available
+                      </Link>
+                    ) : (
+                      "Fully Booked"
+                    )}
                   </button>
                 </div>
               </div>

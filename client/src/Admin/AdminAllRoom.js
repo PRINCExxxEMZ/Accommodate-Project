@@ -126,20 +126,36 @@ const AdminAllRoom = () => {
                   <span className="text-[#0BA75A] text-[13px]"> Amount </span>
                   <h2>{room.price}</h2>
                   <div className="flex gap-x-5">
-                  <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
-                    <Link to={`/hosteldetails/${room.room_id}`}>
-                      Veiw Details
-                    </Link>
-                  </button>
-                  <button className="bg-[#CFA146] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#a77f2f] hover:cursor-pointer cursor-default">
-                    <Link to={`/adminroomdetails/${room.room_id}`}>Edit</Link>
-                  </button>
-                  <button
-                    onClick={() => handleDelete(room.room_id)}
-                    className="bg-[#863e21] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#d26337]  hover:cursor-pointer cursor-default"
-                  >
-                    Delete
-                  </button>
+                    <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
+                      <Link to={`/hosteldetails/${room.room_id}`}>
+                        Veiw Details
+                      </Link>
+                    </button>
+                    <button className="bg-[#CFA146] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#a77f2f] hover:cursor-pointer cursor-default">
+                      <Link to={`/adminroomdetails/${room.room_id}`}>Edit</Link>
+                    </button>
+                    <button
+                      onClick={() => handleDelete(room.room_id)}
+                      className="bg-[#863e21] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#d26337]  hover:cursor-pointer cursor-default"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      className={`text-[14px] text-white px-3 py-1 rounded-sm mt-4 ${
+                        room.is_available
+                          ? "bg-[#0BA75A] hover:bg-[#1d623f]"
+                          : "bg-gray-400 cursor-not-allowed"
+                      }`}
+                      disabled={!room.is_available}
+                    >
+                      {room.is_available ? (
+                        <Link to={`/hosteldetails/${room.room_id}`}>
+                          Still Open
+                        </Link>
+                      ) : (
+                        "Fully Booked"
+                      )}
+                    </button>
                   </div>
                 </div>
               </div>

@@ -15,6 +15,7 @@ const db = knex(knexConfig.development);
 const SECRET_KEY = 'your_secret_key';
 
 
+
 //--------------------------------------------------------- Login endpoint
 router.post('/', async (req, res) => {
     const { email, password } = req.body;

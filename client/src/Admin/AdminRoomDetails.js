@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import hall from "../Assest/01 (6).jpg";
 import { GiBunkBeds } from "react-icons/gi";
+import { FaNairaSign } from "react-icons/fa6";
 import { FaBed } from "react-icons/fa6";
 import Navbar from "../Admin/Navbar";
 import AvailableHostel from "../Component/AvailableHostel";
@@ -204,7 +205,10 @@ const AdminRoomDetails = () => {
         </h1>
 
         <span className="text-[#0BA75A] text-[13px]"> Amount </span>
-        <h2 className="text-[30px] font-semibold mb-10">{room.price}</h2>
+        <div className="flex gap-x-1">
+          <FaNairaSign className="text-[30px] mt-[7px]"/>
+           <h2 className="text-[30px] font-semibold mb-10">{room.price}</h2>
+        </div>
         <button
           onClick={checkAvailabilty}
           className="bg-[#0BA75A] text-[14px] text-white px-5 py-3 rounded-sm text-center text-bold hover:bg-[#1d623f] hover:translate-y-1 transition-transform"

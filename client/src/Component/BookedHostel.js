@@ -1,99 +1,80 @@
-import React from 'react'
-import hall from '../Assest/01 (6).jpg'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { GiBunkBeds } from "react-icons/gi";
 import { FaBed } from "react-icons/fa6";
+import axios from "axios";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
-const BookedHostel = () => {
+const BookedRooms = () => {
+  const { hall_id: hallIdParam, hall_name: hallNameParam } = useParams();
+  const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch rooms
+  useEffect(() => {
+    async function fetchRooms() {
+      try {
+        setLoading(true);
+        const response = await axios.get("http://localhost:8000/api/rooms");
+        setRooms(response.data);
+        setLoading(false);
+      } catch (error) {
+        toastr.error("Error retrieving hostel data");
+        setLoading(false);
+      }
+    }
+    fetchRooms();
+  }, []);
+
+  // Filter booked rooms
+  const bookedRooms = rooms.filter(
+    (room) => room.hall_id.includes(hallIdParam) && !room.is_available
+  );
+
   return (
-    <div>
+    <>
+      <Navbar />
+      <section className="mx-5 md:mx-10 lg:mx-10 pt-20 lg:pt-40">
+        <h1 className="font-semibold text-[#2b2d3a] pb-5">Booked Rooms</h1>
+        <div className="mt-5 bg-[#CFA146] h-[0.7px]" />
+      </section>
 
-                                                          {/* Booked section  */}
-
-    <section className='mx-5 md:mx-10 lg:mx-10 lg:mt-10'>
-      <h1 className='font-semibold text-[#2b2d3a]'>Booked Rooms</h1>
-      <div className='mt-5 mb-10 lg:mb-20 bg-[#CFA146] h-[0.7px]'/>
-
-                                                          {/* Booked Cards  */}
-                                                          
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-8'> 
-
-            <div className='bg-white shadow-md rounded-lg overflow-hidden lg:gap-x-5 p-5 hover:shadow-[#d44540]'>
-              <img src={hall} className=' rounded-md'/>
-              <div>
-                  <h1 className='font-semibold text-[14px] text-[#CFA146] mt-4'>Hall A</h1>
-                  <h2 className='text-[13px] font-semibold'>Room 26</h2>
-                  <h2 className='text-[13px] font-medium text-[#0BA75A]'>Female Hostel</h2>
-                  <div className='flex gap-x-5'>
-                  <div className='flex gap-x-3 items-center'>
-                    <GiBunkBeds  className='text-[#CFA146] text-[27px]'/>
-                    <p className='text-[14px] font-light'>2 Bunk Capacity</p>
-                  </div>
-                  <div className='flex gap-x-3 items-center'>
-                    <FaBed className='text-[#CFA146] text-[27px]'/>
-                    <p className='text-[14px] font-light'>4 Bed Space</p>
-                  </div>
-                  </div>
-                  <span className='text-[#0BA75A] text-[13px]'> Amount </span>
-                  <h2>#50,000.00</h2>
-                  <div className='bg-[#d44540] text-[14px] text-white px-3 py-1 rounded-md mt-4 text-center hover:cursor-pointer cursor-default'>Booked</div>
+      <div className="mx-5 my-5 md:mx-10 lg:mx-10 overflow-hidden">
+        <section className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {bookedRooms.map((room, index) => (
+            <div key={index} className="bg-white shadow-md rounded-lg p-5">
+              <img src={room.room_image} className="rounded-md" alt="Room" />
+              <h1 className="font-semibold text-[#CFA146] mt-4">
+                {hallNameParam}
+              </h1>
+              <h2>{room.room_number}</h2>
+              <div className="flex gap-5">
+                <div className="flex items-center">
+                  <GiBunkBeds className="text-[#CFA146] text-[27px]" />
+                  <p>{room.bunk_capacity}</p>
+                </div>
+                <div className="flex items-center">
+                  <FaBed className="text-[#CFA146] text-[27px]" />
+                  <p>{room.bed_space}</p>
+                </div>
               </div>
-            </div>    
+              <h2>Amount: {room.price}</h2>
+              <button
+                disabled
+                className="bg-gray-400 text-white px-3 py-1 mt-4 rounded cursor-not-allowed"
+              >
+                Fully Booked
+              </button>
+            </div>
+          ))}
+        </section>
+      </div>
+      {/* <Footer /> */}
+    </>
+  );
+};
 
-            <div className='bg-white shadow-md rounded-lg overflow-hidden lg:gap-x-5 p-5 hover:shadow-[#d44540]'>
-              <img src={hall} className=' rounded-md'/>
-              <div>
-                  <h1 className='font-semibold text-[14px] text-[#CFA146] mt-4'>Hall C</h1>
-                  <h2 className='text-[13px] font-semibold'>Room 26</h2>
-                  <h2 className='text-[13px] font-medium text-[#0BA75A]'>Male Hostel</h2>
-                  <div className='flex gap-x-5'>
-                  <div className='flex gap-x-3 items-center'>
-                    <GiBunkBeds  className='text-[#CFA146] text-[27px]'/>
-                    <p className='text-[14px] font-light'>2 Bunk Capacity</p>
-                  </div>
-                  <div className='flex gap-x-3 items-center'>
-                    <FaBed className='text-[#CFA146] text-[27px]'/>
-                    <p className='text-[14px] font-light'>4 Bed Space</p>
-                  </div>
-                  </div>
-                  <span className='text-[#0BA75A] text-[13px]'> Amount </span>
-                  <h2>#50,000.00</h2>
-                  <div className='bg-[#d44540] text-[14px] text-white px-3 py-1 rounded-md mt-4 text-center  hover:cursor-pointer cursor-default'>Booked</div>
-              </div>
-              </div>
-
-            <div className='bg-white shadow-md rounded-lg overflow-hidden lg:gap-x-5 p-5 hover:shadow-[#d44540]'>
-              <img src={hall} className=' rounded-md'/>
-              <div>
-                  <h1 className='font-semibold text-[14px] text-[#CFA146] mt-4'>Hall B</h1>
-                  <h2 className='text-[13px] font-semibold'>Room 26</h2>
-                  <h2 className='text-[13px] font-medium text-[#0BA75A]'>Female Hostel</h2>
-                  <div className='flex gap-x-5'>
-                  <div className='flex gap-x-3 items-center'>
-                    <GiBunkBeds  className='text-[#CFA146] text-[27px]'/>
-                    <p className='text-[14px] font-light'>2 Bunk Capacity</p>
-                  </div>
-                  <div className='flex gap-x-3 items-center'>
-                    <FaBed className='text-[#CFA146] text-[27px]'/>
-                    <p className='text-[14px] font-light'>4 Bed Space</p>
-                  </div>
-                  </div>
-                  <span className='text-[#0BA75A] text-[13px]'> Amount </span>
-                  <h2>#50,000.00</h2>
-                  <div className='bg-[#d44540] text-[14px] text-white px-3 py-1 rounded-md mt-4 text-center  hover:cursor-pointer cursor-default'>Booked</div>
-              </div>
-            </div>  
-
-        </div>
-
-                                          {/* see more link  */}
-     <div className=' justify-center text-center mt-8 mb-10 lg:mt-20'>
-      <button className='bg-[#E7F6EE] text-[14px] text-black px-3 py-1 rounded-md mt-4 hover:bg-black hover:text-[#E7F6EE]'><Link to ='/allbookedhostel'>See More</Link></button>
-     </div>
-
-    </section>
-    </div>
-  )
-}
-
-export default BookedHostel
+export default BookedRooms;

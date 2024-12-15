@@ -46,7 +46,7 @@ const AdminHero = () => {
     <AdminRooms/>
 
                                                           {/* Booked section  */}
-    <BookedHostel/>
+    {/* <BookedHostel/> */}
 
                                                            {/* Footer Section  */}
     <Footer/>

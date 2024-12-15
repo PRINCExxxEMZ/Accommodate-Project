@@ -7,11 +7,11 @@ const AllBookedHostel = () => {
   return (
     <div>
 
-        <Navbar/>
+        <Navbar />
 
         <BookedHostel/>
 
-        <Footer/>
+        {/* <Footer/> */}
 
     </div>
   )
