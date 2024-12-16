@@ -3,6 +3,7 @@ import hall from "../Assest/01 (6).jpg";
 import { Link } from "react-router-dom";
 import { GiBunkBeds } from "react-icons/gi";
 import { FaBed } from "react-icons/fa6";
+import { FaNairaSign } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
@@ -124,7 +125,10 @@ const AdminAllRoom = () => {
                     </div>
                   </div>
                   <span className="text-[#0BA75A] text-[13px]"> Amount </span>
+                  <div className="flex gap-x-1 items-center">
+                  <FaNairaSign className=''/>
                   <h2>{room.price}</h2>
+                  </div>
                   <div className="flex gap-x-5">
                     <button className="bg-[#0BA75A] text-[14px] text-white px-3 py-1 rounded-sm mt-4 hover:bg-[#1d623f]  hover:cursor-pointer cursor-default">
                       <Link to={`/hosteldetails/${room.room_id}`}>
