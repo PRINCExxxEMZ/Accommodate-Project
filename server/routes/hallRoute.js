@@ -37,7 +37,7 @@ router.get("/:id", async (req, res) => {
     res.status(500).json({ error: "Failed to retrieve hall" });
   }
 });
-
+ 
 // POST (Create) a new hall
 router.post("/", async (req, res) => {
   const { name, gender, rooms, hall_image } = req.body;
